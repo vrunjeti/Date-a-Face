@@ -1,0 +1,201 @@
+address, geo-coordinates, city, state
+PSC 5330, Box 1579
+APO AP 18908,-69.437717,New Williatown,Virginia
+360 Turner Plains Apt. 675
+South Roseanneview, DC 10640,84.196365,Markstown,Maine
+2379 Presley Ford Suite 095
+East Eunicebury, KY 64576,2.539399,Ligeland,Nebraska
+USNS Kohler
+FPO AP 17637,-109.777053,New Karintown,WestVirginia
+605 Coolidge Stream
+North Mansfield, SC 22007,-175.057123,East Ismaelfurt,Arkansas
+081 Anderson Alley Apt. 059
+Schneiderstad, VI 55192-3006,-128.072653,Ronstad,Arizona
+321 Rath Cliffs
+New Kristianborough, AZ 37165-8629,-15.476008,Zillahton,Georgia
+USNS Harber
+FPO AE 97501,88.977505,Magdalenberg,Alabama
+528 Dania Coves Apt. 776
+Hodkiewiczfurt, AK 88125,-175.685887,South Osie,Wisconsin
+4940 Mame Vista Suite 616
+Schmittport, AZ 37017-0181,-92.563474,New Marylouise,Nevada
+7248 Bechtelar Club
+Francismouth, MH 42898-4937,25.866082,South Gilmore,Indiana
+Unit 8664 Box 5333
+DPO AP 61200,-9.028262,Taylerchester,Alabama
+32339 Gottlieb Ferry Suite 535
+Wilkinsontown, AS 26387-0825,-105.741866,Lake Lillianaport,NewMexico
+030 Armani Well
+Elseside, AK 16823-9863,95.405190,Natalyhaven,Florida
+36283 Simonis Shoal Suite 592
+Lake Nicoborough, GU 71740,154.232346,East Jaylan,Texas
+4417 Abernathy Estates
+Franeckiport, MO 29506,-65.080752,North Zacheryport,Louisiana
+811 Stokes Ridge
+North Toni, DC 64174-5625,-89.074458,West Velvaburgh,Mississippi
+499 Parisian Circles Suite 312
+Port Coretta, MP 44832,-24.549602,West Krystleborough,Montana
+58224 Kuphal Harbors Suite 838
+Lake Bradfort, SC 14370-4049,11.582619,New Dollyechester,WestVirginia
+114 Ruie Port Suite 408
+Mendytown, MD 91961-2343,160.542948,South Mathewside,California
+03844 Hintz Meadow
+North Enriquemouth, CO 90664-5256,2.325454,South Madeleine,Vermont
+90142 Cal Hollow
+South Natalie, MI 12021-4296,156.846061,Lake Arkie,Georgia
+6877 Clemens Loaf Suite 017
+Lake Neelyville, VA 45085-6644,137.259808,Port Olgaport,Minnesota
+7475 Schuppe Roads Apt. 536
+New Juston, PW 16387-7306,70.708687,Lake Ras,Wyoming
+4835 Schmidt Station Suite 714
+Emelyside, FL 20417,-23.744309,New Ellerstad,Georgia
+9113 Joeseph Mission
+Cormierport, SC 06663,-49.138662,Soledadview,Georgia
+35929 Upton Avenue
+Mayerton, IA 20583-0985,106.486935,South Shirl,Arkansas
+0515 Ernser Stravenue
+Aiyannashire, PR 52156,131.660428,North Sallie,Pennsylvania
+627 Prohaska Rapid Apt. 238
+Alenamouth, ME 01827,-171.738632,Schinnerborough,NewJersey
+249 Swift Flats
+Zitaburgh, FM 24744-9437,-95.947609,Curleymouth,Louisiana
+115 Mohr Harbor
+West Sina, TX 86039,-176.441500,Aliviahaven,Connecticut
+578 Mills Tunnel
+East Christie, PA 05205-4700,41.912448,Blocktown,Pennsylvania
+96318 Violet Village Apt. 581
+Kohlermouth, MP 04039-1664,-105.375853,Ryanburgh,Virginia
+5873 Bogan Mountain
+New Westley, SD 94711-8811,162.914285,Lake Jett,Iowa
+278 Peyton Parks Suite 655
+Baumbachshire, MH 09794,-75.243866,New Delinastad,Mississippi
+0546 Sipes Mill Suite 331
+Weberport, AL 37951-7392,71.136369,Darinshire,Colorado
+4036 Eichmann Fields Apt. 491
+Turcottemouth, WI 80607,176.104373,Hintzbury,Washington
+18822 Morissette Turnpike
+Lake Doris, KY 75626,65.152586,Pamport,Alaska
+9105 Vinton Skyway Apt. 658
+North Kurt, ND 23859,170.497402,Jesusburgh,California
+2989 Oline Radial
+Port Hiram, PA 77755,65.415710,Irvinebury,NewMexico
+7108 Bruen Union Suite 023
+Yoelside, KS 11945,106.288240,Port Reginal,Nebraska
+385 Kayla Haven
+North Ashby, PR 74772-7861,-2.108110,Feeneyfurt,Georgia
+7804 Tromp Prairie
+East Serina, OK 45815,8.310778,Bryanmouth,Kansas
+3381 Tyrese Branch Apt. 418
+Uptonville, MT 10557,-106.414370,East Orren,SouthDakota
+042 Dameon Isle
+Montiehaven, PA 16051-1681,81.865576,Donnellyberg,Utah
+803 Consuelo Estate
+Port Randolfborough, ND 97520,-21.633077,Framifurt,Arkansas
+393 Tyron Pass Suite 755
+Lake Clotildahaven, AK 91483,34.230835,Gerholdview,Utah
+57297 Grimes Views Suite 988
+Mrazfurt, RI 17177-2512,-74.170686,Boyleside,Georgia
+3326 Leffler Prairie Suite 798
+Elfiefort, ND 24450-4537,-109.166378,Port Taliyah,Pennsylvania
+2020 Hahn Plains Suite 101
+Karissaton, ND 84691,16.280210,Allyssafort,Tennessee
+225 Johannah Fall Apt. 299
+East Earleystad, CO 92062-6682,-98.254643,North Celine,Louisiana
+3659 Darrel Valley Suite 748
+Durellhaven, IN 11984,-32.600586,East Jermain,NewJersey
+6320 Heathcote Crest Suite 512
+West Icy, RI 09607,-48.034299,Bradtkeport,Indiana
+059 Zelma Branch
+New Lynwoodberg, NJ 17578-3129,-170.225339,Morarport,Oklahoma
+484 Lind Park
+North Stonestad, ID 80079,131.521773,Anthoneybury,Ohio
+46616 Wyman Trail
+Kleinmouth, OH 91398,-171.117662,South Harleybury,Vermont
+9644 Kaelynn Grove
+New Macarthur, PR 49103-7034,-173.623817,Lake Danyellfurt,Virginia
+9260 Steuber Station Apt. 165
+North Jayvion, AS 22960-0244,-78.526170,Ondrickashire,Wyoming
+88515 Claudie Junctions Suite 382
+South Jamison, AZ 12961-9214,105.495203,East Shannon,Montana
+69919 Lorne Parkways
+South Baxter, MA 94701-2690,-79.628004,Kareemmouth,Utah
+9362 Mona Dam Apt. 018
+Port Pierre, NV 18565-0213,9.024431,Hooverburgh,Kansas
+0241 Charley Loaf Suite 599
+Dickinsonfurt, ND 15743-5027,153.093002,Tajshire,Virginia
+6016 Drew Forest Apt. 511
+Pourosport, NM 37015-2715,104.267384,Hodkiewiczville,NewJersey
+661 Wynona Point Suite 222
+East Chanelleland, MA 10928-3020,-50.795281,Lake Malissaview,NewHampshire
+508 Johnston Gateway
+Sabraville, MA 47311,-124.891766,New Curleyport,Delaware
+887 Rogahn Ports Apt. 542
+East Reginal, VT 00066-5751,92.737692,East Oris,Virginia
+0776 Ruby Ridge Apt. 078
+East Isaifurt, NY 15280-5405,-78.319393,Falonfurt,Washington
+824 Hayes Ridge
+Gislasonton, KY 84205,-143.466674,West Brandiville,Oregon
+935 Aurora Lights Apt. 826
+Lake Maxim, GA 48074,176.779342,Dorothyfurt,Michigan
+91310 Boyle Field
+North Lindseychester, PW 09918-3670,77.754494,East Jobhaven,NorthDakota
+5601 Kimberli Unions
+North Karolyn, KY 42374,-25.590686,East Cathy,Alaska
+555 Sawayn Lock
+New Priscilaton, MD 93196,-39.762773,Bodeville,Tennessee
+7396 Wintheiser Course Suite 484
+Crystalton, OK 30697-8146,172.025439,South Onnie,Maine
+347 Porsche Oval
+McDermotthaven, TX 03666,-136.280624,East Tory,SouthCarolina
+016 Adams Junction Suite 244
+Zulaufberg, NC 18261-0468,153.393448,West Britny,Colorado
+504 Cruickshank Fords
+Sienashire, KS 37053-9777,136.687463,North Ebb,Nebraska
+3697 Swaniawski Drive Apt. 922
+Burtborough, DE 61751-4445,-7.189169,North Trena,Wyoming
+65935 Aiden Pass Apt. 089
+South Cappieville, FM 66274-4074,-140.511027,Jaileneville,Georgia
+032 Schultz Plains
+East Ivonne, AZ 85833,69.133812,North Rebeca,Michigan
+2797 Ullrich Lodge
+Gerlachbury, GA 36880-3299,-176.727981,Roseannbury,Florida
+2864 Gaynell Mountains Suite 370
+Lake Illa, HI 92165,-83.523388,South Enosborough,NewJersey
+68293 Crona Hills
+West Tishie, DE 39801-0859,-31.407402,Corkeryside,Ohio
+766 Justice Mill
+Erneststad, FL 97049-0046,-71.317737,Amiraside,Montana
+PSC 9810, Box 8956
+APO AP 79169,-63.924739,Lake Ajastad,Florida
+228 Rosenbaum Union
+Gaynellshire, WI 42945,112.707966,Kossshire,Arizona
+7850 Sipes Crescent Suite 461
+Lake Stephonstad, VA 83626,96.116803,Trevinhaven,Tennessee
+5543 Howell Island Suite 244
+North Justyn, MN 55651-6731,75.367833,East Deandra,Ohio
+PSC 8141, Box 9908
+APO AP 31822,-144.723584,North Jade,Georgia
+71758 Delano Ways Suite 792
+New Alleanstad, MT 74231,-177.951516,Kirafurt,Vermont
+PSC 5896, Box 5382
+APO AA 28079,33.078310,Ravenstad,Arizona
+PSC 7077, Box 7065
+APO AP 58590,58.521834,Griselstad,Maine
+PSC 4812, Box 1857
+APO AA 94369-7106,87.412892,Lake Latarsha,NewJersey
+8547 Welch Stream Apt. 354
+New Tayshaun, KS 37673,28.796403,West Jenni,Colorado
+37863 Treyton Mission Suite 084
+Harrelltown, NH 48784,-79.987727,Cassidyport,Kentucky
+33716 Langworth Shores Apt. 297
+Haneshire, CT 52280,16.480840,Paucekborough,Iowa
+95482 Breanna Fields Apt. 314
+Klockomouth, WV 99176,149.446167,Wildatown,California
+1572 Reichert Ways Suite 405
+North Tylor, CA 37602,-40.428129,North Timmie,Nebraska
+439 Lacy View Apt. 336
+Lake Shaniceside, IL 25471,58.708637,East Leborough,Indiana
+146 Oliva Glens Suite 004
+East Roll, LA 08547,-93.318691,Fleetabury,Louisiana
+40293 Nia Corners Apt. 997
+Norenestad, RI 05337-3304,162.555714,New Adlaiville,Massachusetts

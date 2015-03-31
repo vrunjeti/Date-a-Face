@@ -1,0 +1,84 @@
+<div class="row"></div>
+<div class="row">
+	<!-- side bar -->
+	<div class="col s3">
+		<div class="card lime lighten-2">
+            <div class="card-content white-text">
+            	<!-- categories -->
+            	<!-- ng repeat with all categories -->
+              	<span class="card-title">Categories</span>
+              	<form action="#">
+				  <p>
+				    <input type="checkbox" id="c1" />
+				    <label for="c1">Category 1</label>
+				  </p>
+				  <p>
+				    <input type="checkbox" id="c2" />
+				    <label for="c2">Category 2</label>
+				  </p>
+				  <p>
+				    <input type="checkbox" id="c3" />
+				    <label for="c3">Category 3</label>
+				  </p>
+				  <p>
+				    <input type="checkbox" id="c4" />
+				    <label for="c4">Category 4</label>
+				  </p>  
+				</form>
+				<!-- <div class="divider"></div> -->
+				<!-- price filter -->
+				<span class="card-title">Price (in $)</span>
+				<div class="row">
+					<form>
+						<div class="col s3">
+							<input type="text" id="minprice" placeholder="min" />
+				    		<!-- <label for="minprice"></label> -->
+						</div>
+						<div class="col s2">
+							<p class="flow-text">-</p>
+						</div>
+						<div class="col s3">
+							<input type="text" id="maxprice" placeholder="max" />
+						</div>
+						<div class="col s2">
+							<button class="btn waves-effect waves-light" type="submit" style="width:2.5rem; padding:0 0.5rem">
+							    <i class="mdi-content-send right"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+	         </div>
+		</div>
+	</div>
+	<!-- end side bar -->
+
+	<!-- items -->
+	<div class="col s9">
+
+		<div ng-repeat="item in searchC.inventory">
+			<div class="card-container col s4">
+				<div class="card">
+			        <div class="card-image waves-effect waves-block waves-light">
+			          <img class="activator" src="images/yeoman.png">
+			        </div>
+			        <div class="card-content">
+			          <span class="card-title activator grey-text text-darken-4"> {{ item.itemName }} </span>
+			          <br>
+			          <span class="card-title activator grey-text text-darken-4"> ${{ item.price }} </span>
+			          <p><a href="#/item/{{item.itemId}}">View Item</a></p>
+			        </div>
+			        <div class="card-reveal">
+			          <span class="card-title grey-text text-darken-4"> {{ item.itemName }} <i class="mdi-navigation-close right"></i></span>
+			          <p> {{ item.description_short }}</p>
+			        </div>
+			    </div>
+			</div>	
+		</div>
+		<!-- end repeat -->
+
+	</div>
+	<!-- end items -->
+
+
+
+</div>
