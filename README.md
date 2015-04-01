@@ -15,6 +15,7 @@ CS 411 Best Group
 
 ```
 npm install
+bower install
 ```
 ### To start server and compile changes:
 

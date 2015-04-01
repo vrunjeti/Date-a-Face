@@ -48,3 +48,10 @@ angular
         redirectTo: '/'
       });
   });
+  // .factory('Stuff', function($http){
+  //     var myFactory = {};
+  //     myFactory.all = function(){
+  //       return $http.get("http://localhost:8000/sql/select/Item/*/name='" + vm.squery + "'");
+  //     };
+  //     return myFactory;
+  // })

@@ -55,21 +55,38 @@
 	<!-- items -->
 	<div class="col s9">
 
-		<div ng-repeat="item in searchC.inventory">
+		<div>
+			<form>
+              <div class="input-field">
+                <!-- <input id="search" class="validate" type="text" placeholder="search" required>
+                <label for="search"><i class="mdi-action-search"></i></label> -->
+                <i class="mdi-action-search prefix"></i>
+                <input id="icon_prefix" type="text" class="validate" ng-model="searchC.squery">
+                <label for="icon_prefix">Search</label>
+              </div>
+            </form>
+		</div>
+
+		<button class="btn waves-effect waves-light" type="submit" name="action" ng-click="searchC.load()">
+	    	Submit
+		    <i class="mdi-content-send right"></i>
+		</button>
+
+		<div ng-repeat="item in searchC.sresults">
 			<div class="card-container col s4">
 				<div class="card">
 			        <div class="card-image waves-effect waves-block waves-light">
 			          <img class="activator" src="images/yeoman.png">
 			        </div>
 			        <div class="card-content">
-			          <span class="card-title activator grey-text text-darken-4"> {{ item.itemName }} </span>
+			          <span class="card-title activator grey-text text-darken-4"> {{ item.name }} </span>
 			          <br>
 			          <span class="card-title activator grey-text text-darken-4"> ${{ item.price }} </span>
-			          <p><a href="#/item/{{item.itemId}}">View Item</a></p>
+			          <p><a href="#/item/{{item.id}}">View Item</a></p>
 			        </div>
 			        <div class="card-reveal">
-			          <span class="card-title grey-text text-darken-4"> {{ item.itemName }} <i class="mdi-navigation-close right"></i></span>
-			          <p> {{ item.description_short }}</p>
+			          <span class="card-title grey-text text-darken-4"> {{ item.name }} <i class="mdi-navigation-close right"></i></span>
+			          <p> {{ item.shortDes }}</p>
 			        </div>
 			    </div>
 			</div>	
