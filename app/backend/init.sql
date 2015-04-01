@@ -12,7 +12,7 @@ rating FLOAT
 );
 
 CREATE TABLE Item (
-id INT PRIMARY KEY, 
+id INT PRIMARY KEY AUTO_INCREMENT, 
 name CHAR(20),
 shortDes CHAR(50), 
 longDesc CHAR(180), 
