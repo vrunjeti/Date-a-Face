@@ -17,7 +17,7 @@ name CHAR(20),
 shortDes CHAR(50), 
 longDesc CHAR(180), 
 price FLOAT NOT NULL, 
-userId CHAR(40) UNIQUE,
+userId CHAR(40) NOT NULL,
 CONSTRAINT fk_userIdemail FOREIGN KEY (userId) REFERENCES User(email) ON DELETE CASCADE
 );
 
