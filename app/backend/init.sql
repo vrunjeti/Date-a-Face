@@ -13,9 +13,9 @@ rating FLOAT
 
 CREATE TABLE Item (
 id INT PRIMARY KEY AUTO_INCREMENT, 
-name CHAR(20),
-shortDes CHAR(50), 
-longDesc CHAR(180), 
+name CHAR(200),
+shortDes CHAR(140), 
+longDesc CHAR(1500), 
 price FLOAT NOT NULL, 
 userId CHAR(40) NOT NULL,
 CONSTRAINT fk_userIdemail FOREIGN KEY (userId) REFERENCES User(email) ON DELETE CASCADE
@@ -31,7 +31,7 @@ CREATE TABLE Location  (
 userId CHAR(40) PRIMARY KEY, 
 city CHAR(30) NOT NULL, 
 state CHAR(30) NOT NULL, 
-curAddress CHAR(50) NOT NULL,
+curAddress CHAR(200) NOT NULL,
 CONSTRAINT fk_locIdemail FOREIGN KEY (userId) REFERENCES User(email) ON DELETE CASCADE
 );
 
