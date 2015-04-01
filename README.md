@@ -6,6 +6,7 @@ CS 411 Best Group
 2. Type (without the quotes):
   * 'source ~/path/to/init.sql' on linux/mac
   * 'source C://path/to/init.sql' on Windows
+3. Type 'source ~/path/to/dummy_data.sql' to generate dummy_data for the database
 
 ## Running
 
