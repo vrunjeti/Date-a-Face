@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'swag',
+    password : 'a',
     database : 'sail_db'
 });
 connection.connect();

@@ -18,7 +18,7 @@ angular.module('411t2App')
 		// id is number, userId is email
 		// var id = Math.floor(Math.random() * 10000000);
 		$http
-			.post("http://localhost:8000/sql/insert/Item/'" + formData.name + "','" + formData.shortDes + "','" + formData.longDesc + "','" + formData.price + "','" + formData.email + "'", {})
+			.post("http://45.55.186.239:8000/sql/insert/Item/'" + formData.name + "','" + formData.shortDes + "','" + formData.longDesc + "','" + formData.price + "','" + formData.email + "'", {})
 			.success(function(){
 				alert('Item inserted.');
 				formData.name = '';

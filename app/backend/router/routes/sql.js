@@ -7,8 +7,15 @@ var router = express.Router();
 router.post('/insert/:table/:attr', function(req, res) {
     var table = req.params.table;
     var attr = req.params.attr;
-    var q = 'INSERT INTO ' + table + ' VALUES (' +  attr + ')' + ';';
-    console.log(q);  
+	
+	var q = '';
+	if(table === 'Item') {
+		q = 'INSERT INTO Item (name, shortDes, longDesc, price, userId) VALUES (' +  attr + ')' + ';';	
+	}
+	else {
+    	q = 'INSERT INTO ' + table + ' VALUES (' +  attr + ')' + ';';
+    }
+	console.log(q);  
     connection.query(q, function(err, rows, fields){
         if(!err) {
             console.log('Success: ', rows);
