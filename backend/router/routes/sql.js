@@ -126,6 +126,11 @@ router.put('/update', function(req, res) {
 router.delete('/delete', function(req, res) {
     var table = req.query.table,
           cond = req.query.cond;
+
+          // Need to code in the MYSQL cascade delete? Check for item delete and user delete
+
+
+
     // catch error
     if(typeof table === 'undefined' || typeof cond === 'undefined') {
         console.log("Invalid parameters!");
@@ -144,6 +149,36 @@ router.delete('/delete', function(req, res) {
             }
         });
     }
+});
+
+
+
+// SEARCH //
+
+/**
+* GET Route /search/item
+* @params query
+* Usage:
+* GET item/search?query='something to search'
+*/
+router.get('/item/search/', function(req, res) {
+    var searchQuery = req.query.query
+    // catch error
+    if(typeof searchQuery=== 'undefined') {
+        searchQuery = "";
+    }
+    var q = 'SELECT * FROM Item WHERE MATCH(name, shortDes, longDesc) AGAINST (' + searchQuery + ')';
+    console.log(q)
+    connection.query(q, function(err, rows, fields){
+        if(!err) { 
+            console.log('Returning: ', rows);
+            res.send(rows);
+        }
+        else {
+            console.log(err);
+            res.sendStatus(403);
+        }
+    });
 });
 
 module.exports = router;
