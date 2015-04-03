@@ -1,7 +1,11 @@
 {
   "name": "411t2",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+	"cors": "^2.5.3",
+    	"express": "^4.10.6",
+	"mysql": "^2.5.4"
+	},
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
