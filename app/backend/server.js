@@ -8,5 +8,6 @@ app.use(cors());
 var router = require('./router')(app);
 
 module.exports = app;
-app.listen(8000, '0.0.0.0');
+//app.listen(8000, '0.0.0.0');
+app.listen(8000);
 console.log("Listening on port 8000");

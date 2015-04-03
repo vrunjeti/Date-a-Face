@@ -25,7 +25,7 @@ angular.module('411t2App')
   	vm.load = function(){
   		// example: GET /sql/select/User/*/firstName='Bob'
 		$http
-			.get("http://45.55.186.239:8000/sql/select/Item/*/name='" + vm.squery + "'")
+			.get("http://localhost:8000/sql/select/Item/*/name='" + vm.squery + "'")
 			.success(function(data){
 				vm.sresults = data;
 				vm.squery = '';
