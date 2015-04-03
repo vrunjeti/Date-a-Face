@@ -1,0 +1,11 @@
+CHANGELOG
+
+Note: Please update this document with the changes you made to the codebase! Order the most recent changes on top.
+
+BACKEND SERVER (note all function changes have been tested unless otherwise stated)
++ added search functionality as a new route item/search for the Item table
++ modifed init.sql to include a full text index for search capabilities
++ modified init.sql to include timestamp for items that auto-populates on insertion or update
++ modified sql.js to refactor rest api structure (note angular end will need to be re-written)
++ moved all dependencies to one package.json
++ moved backend folder out of app folder and delete backend/stuff (redundant)

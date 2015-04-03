@@ -1,6 +1,8 @@
 # Date-a-Face
 CS 411 Best Group
 
+### Read the changelog for features and recent changes.
+
 ## Running the app
 - Make sure you install node, bower, ruby, compass, and npm if you haven't.
 - Install the dependencies by running:
