@@ -2,96 +2,148 @@ var connection = require('../../connection');
 var express = require('express');
 var router = express.Router();
 
-// INSERT INTO table VALUES attr
-// example: POST /sql/insert/User/'Joe','Mama','yoyoma@gmail','7737189210','luigi',99
-router.post('/insert/:table/:attr', function(req, res) {
-    var table = req.params.table;
-    var attr = req.params.attr;
-	
-	var q = '';
-	if(table === 'Item') {
-		q = 'INSERT INTO Item (name, shortDes, longDesc, price, userId) VALUES (' +  attr + ')' + ';';	
-	}
-	else {
-    	q = 'INSERT INTO ' + table + ' VALUES (' +  attr + ')' + ';';
+/**
+* POST Route /insert 
+* @params table - REQUIRED
+* @params attr - REQUIRED
+* Usage:
+* GET /sql/insert?table=Item&attr=Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
+* Translated to MySQL: INSERT INTO table VALUES (attr);
+*/
+router.post('/insert', function(req, res) {
+    var table = req.query.table,
+          attr = req.query.attr;
+    // catch error
+    if(typeof table === 'undefined' || typeof attr === 'undefined') {
+        console.log("Invalid parameters!");
     }
-	console.log(q);  
-    connection.query(q, function(err, rows, fields){
-        if(!err) {
-            console.log('Success: ', rows);
-            res.sendStatus(200);
+    else { // make query
+        var q = '';
+        if(table === 'Item') {
+            q = 'INSERT INTO Item (name, shortDes, longDesc, price, userId) VALUES (' +  attr + ')' + ';';  
         }
         else {
-            console.log(err);
-            res.sendStatus(403);
+            q = 'INSERT INTO ' + table + ' VALUES (' +  attr + ')' + ';';
         }
-    });
-});
-
-// SELECT attr FROM table WHERE cond
-// example: GET /sql/select/User/*/firstName='Bob'
-// cond is optional, if no cond parameter is included, WHERE clause will not be used.
-router.get('/select/:table/:attr/:cond?', function(req, res) {
-    var table = req.params.table;
-    var attr = req.params.attr;
-    var cond = "";
-    if (req.params.cond) {
-        cond = ' WHERE ' + req.params.cond;
+        console.log(q);  
+        connection.query(q, function(err, rows, fields){
+            if(!err) {
+                console.log('Success: ', rows);
+                res.sendStatus(200);
+            }
+            else {
+                console.log(err);
+                res.sendStatus(403);
+            }
+        });
     }
-    var q = 'SELECT ' + attr + ' FROM ' + table + cond + ';';
-    console.log(q);
-    connection.query(q, function(err, rows, fields){
-        if(!err) { 
-            console.log('Returning: ', rows);
-            res.send(rows);
-        }
-        else {
-            console.log(err);
-            res.sendStatus(403);
-        }
-    });
 });
 
-// UDPATE table SET attr WHERE
-router.put('/update/:table/:attr/:cond?', function(req, res) {
-    var table = req.params.table;
-    var attr = req.params.attr;
-    var cond = "";
-    if (req.params.cond) {
-        cond = ' WHERE ' + req.params.cond;
+/**
+* GET Route /select 
+* @params table - REQUIRED
+* @params attr - REQUIRED
+* @params cond - OPTIONAL
+* Usage:
+* GET /sql/select?table=User&attr=*
+* GET /sql/select?table=User&attr=*&cond=firstName='Andy'
+* Translated to MySQL: SELECT attr FROM Table WHERE cond;
+*/
+router.get('/select', function(req, res) {
+    var table = req.query.table,
+          attr = req.query.attr,
+          cond = req.query.cond;
+    // catch error
+    if(typeof table === 'undefined' || typeof attr === 'undefined') {
+        console.log("Invalid parameters!");
     }
-    var q = 'UPDATE ' + table + ' SET ' + attr + cond + ';';
-    console.log(q);  
-    connection.query(q, function(err, rows, fields) {
-        if(!err) { 
-            console.log('Success: ', rows);
-            res.sendStatus(200);
+    else { // make query
+        var condition = '';
+        if (typeof cond != 'undefined') {
+             condition = ' WHERE ' + cond;
         }
-        else {
-            console.log(err);
-            res.sendStatus(403);
-        }
-    });
+        var q = 'SELECT ' + attr + ' FROM ' + table + condition + ';';
+        console.log(q)
+        connection.query(q, function(err, rows, fields){
+            if(!err) { 
+                console.log('Returning: ', rows);
+                res.send(rows);
+            }
+            else {
+                console.log(err);
+                res.sendStatus(403);
+            }
+        });
+    }
 });
 
-// DELETE FROM table WHERE cond
-// example: DELETE /sql/delete/User/firstName='Bob'
-router.delete('/delete/:table/:cond', function(req, res) {
-    var table = req.params.table;
-    var cond = req.params.cond;
-    var q = 'DELETE FROM ' + table + ' WHERE ' + cond + ';'
-    console.log(q);  
-    connection.query(q, function(err, rows, fields) {
-        if(!err) { 
-            console.log('Success: ', rows);
-            res.sendStatus(200);
+/**
+* PUT Route /update 
+* @params table - REQUIRED
+* @params attr - REQUIRED
+* @params cond - OPTIONAL
+* Usage:
+* PUT /sql/update?table=User&attr=*
+* PUT /sql/update?table=User&attr=firstName='Bob'&cond=firstName='Andy'
+* Translated to MySQL: UDPATE table SET attr WHERE cond;
+*/
+router.put('/update', function(req, res) {
+    var table = req.query.table,
+          attr = req.query.attr,
+          cond = req.query.cond;
+    // catch error
+    if(typeof table === 'undefined' || typeof attr === 'undefined') {
+        console.log("Invalid parameters!");
+    }
+    else { // make query
+        var condition = '';
+        if (typeof cond != 'undefined') {
+             condition = ' WHERE ' + cond;
         }
-        else {
-            console.log(err);
-            res.sendStatus(403);
-        }
-    });
+        var q = 'UPDATE ' + table + ' SET ' + attr + condition + ';';
+        console.log(q);  
+        connection.query(q, function(err, rows, fields) {
+            if(!err) { 
+                console.log('Success: ', rows);
+                res.sendStatus(200);
+            }
+            else {
+                console.log(err);
+                res.sendStatus(403);
+            }
+        });
+    }
 });
 
+/**
+* DELETE Route /delete
+* @params table - REQUIRED
+* @params cond - REQUIRED
+* Usage:
+* DELETE /sql/delete?table=Item&cond=name='cookies'
+* Translated to MySQL: DELETE FROM table WHERE cond;
+*/
+router.delete('/delete', function(req, res) {
+    var table = req.query.table,
+          cond = req.query.cond;
+    // catch error
+    if(typeof table === 'undefined' || typeof cond === 'undefined') {
+        console.log("Invalid parameters!");
+    }
+    else { // make query
+        var q = 'DELETE FROM ' + table + ' WHERE ' + cond + ';'
+        console.log(q);  
+        connection.query(q, function(err, rows, fields) {
+            if(!err) { 
+                console.log('Success: ', rows);
+                res.sendStatus(200);
+            }
+            else {
+                console.log(err);
+                res.sendStatus(403);
+            }
+        });
+    }
+});
 
 module.exports = router;
