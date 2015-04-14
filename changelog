@@ -9,3 +9,14 @@ BACKEND SERVER (note all function changes have been tested unless otherwise stat
 + modified sql.js to refactor rest api structure (note angular end will need to be re-written)
 + moved all dependencies to one package.json
 + moved backend folder out of app folder and delete backend/stuff (redundant)
+4/14:
++ Added morgan (package for logging requests) and body-parser (package for parsing POST params). npm install in backend folder
++ Schema changed. Dummy data changed to reflect new schema. Need to reinitiate database. 
++ changed search query in sql.js to account for single quotes
++ added body-parser package to server.js
++ changed req.query.___ to req.body.___ for router.post in sql.js (so it can work directly with POST body)
+
+FRONT END
+4/14:
++ changed query formatting in search and add item page to work for new api request format
++ 

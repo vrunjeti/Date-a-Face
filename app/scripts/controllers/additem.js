@@ -11,14 +11,23 @@ angular.module('411t2App')
   .controller('AdditemCtrl', function ($http) {
     // bind 'this' to vm (view-model)
 	var vm = this;
+	var url = 'http://localhost:8000/sql/';
 
-	// example: POST /sql/insert/User/'Joe','Mama','yoyoma@gmail','7737189210','luigi',99
 	vm.insert = function(formData){
-		// id, name, shortDes, longDesc, price, userId
-		// id is number, userId is email
-		// var id = Math.floor(Math.random() * 10000000);
+		/**
+		* POST Route /insert 
+		* @params table - REQUIRED
+		* @params attr - REQUIRED
+		* Usage:
+		* GET /sql/insert?table=Item&attr="Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
+		* Translated to MySQL: INSERT INTO table VALUES (attr);
+		*/
+
 		$http
-			.post("http://localhost:8000/sql/insert/Item/'" + formData.name + "','" + formData.shortDes + "','" + formData.longDesc + "','" + formData.price + "','" + formData.email + "'", {})
+			.post(url + 'insert', {
+					table: 'Item',
+					attr: '"' + formData.name + '","' + formData.shortDes + '","' + formData.longDesc + '",' + formData.price + ',' + 1 // 1 at end is userId, hardcoded for now
+			})
 			.success(function(){
 				alert('Item inserted.');
 				formData.name = '';
@@ -28,6 +37,7 @@ angular.module('411t2App')
 				formData.email = '';
 			});
 	}
+
 
   });
 

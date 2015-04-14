@@ -12,7 +12,7 @@ bower install
 ```
 - Start mysql and initiate the database (see below).
 ```
-mysql -p
+mysql -u root -p
 ```
 -  Start the server
 ```
@@ -33,3 +33,8 @@ grunt serve
 source ~/path/to/dummy_data.sql'
 ```
 to generate the dummy data
+
+## Notes
+- Pull before you change code!! To avoid conflicts
+- Remember to change password in connection.js to your mysql password 
+- Update changelog 

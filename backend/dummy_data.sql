@@ -1,10 +1,10 @@
 USE sail_db;
 
-INSERT INTO User (firstName, lastName, email, phone, rating) VALUES ("Arpit", "Khanuja", "khanuja2@illinois.edu", "1234567890",  NULL);
-INSERT INTO User (firstName, lastName, email, phone, rating) VALUES ("Andy", "Vuong", "avuong3@illinois.edu", "11234911",  NULL);
-INSERT INTO User (firstName, lastName, email, phone, rating) VALUES ("Michelle", "Zheng", "mzheng6@illinois.edu", "1234567890",  NULL);
-INSERT INTO User (firstName, lastName, email, phone, rating) VALUES ("Varun", "Munjeti", "vrunjeti@illinois.edu", "1234567891",   NULL);
-INSERT INTO User (firstName, lastName, email, phone, rating) VALUES ("Varuna", "Patel", "ilovevarun@illinois.edu", "1234567891",   NULL);
+INSERT INTO User (firstName, lastName, email, phone, rating, password) VALUES ("Arpit", "Khanuja", "khanuja2@illinois.edu", "1234567890",  NULL, "");
+INSERT INTO User (firstName, lastName, email, phone, rating, password) VALUES ("Andy", "Vuong", "avuong3@illinois.edu", "11234911",  NULL, "");
+INSERT INTO User (firstName, lastName, email, phone, rating, password) VALUES ("Michelle", "Zheng", "mzheng6@illinois.edu", "1234567890",  NULL, "");
+INSERT INTO User (firstName, lastName, email, phone, rating, password) VALUES ("Varun", "Munjeti", "vrunjeti@illinois.edu", "1234567891",   NULL, "");
+INSERT INTO User (firstName, lastName, email, phone, rating, password) VALUES ("Varuna", "Patel", "ilovevarun@illinois.edu", "1234567891",   NULL, "");
 
 INSERT INTO Location (userId, city, state, curAddress) VALUES (1, "Urbana", "Illinois", "1109 W Illinois St");
 INSERT INTO Location (userId, city, state, curAddress) VALUES (2, "Champaign", "Illinois", "491 E Armory Ave");

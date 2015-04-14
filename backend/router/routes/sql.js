@@ -7,12 +7,12 @@ var router = express.Router();
 * @params table - REQUIRED
 * @params attr - REQUIRED
 * Usage:
-* GET /sql/insert?table=Item&attr=Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
+* GET /sql/insert?table=Item&attr="Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
 * Translated to MySQL: INSERT INTO table VALUES (attr);
 */
 router.post('/insert', function(req, res) {
-    var table = req.query.table,
-          attr = req.query.attr;
+    var table = req.body.table,
+          attr = req.body.attr;
     // catch error
     if(typeof table === 'undefined' || typeof attr === 'undefined') {
         console.log("Invalid parameters!");
@@ -167,7 +167,7 @@ router.get('/item/search/', function(req, res) {
     if(typeof searchQuery=== 'undefined') {
         searchQuery = "";
     }
-    var q = 'SELECT * FROM Item WHERE MATCH(name, shortDes, longDesc) AGAINST (' + searchQuery + ')';
+    var q = "SELECT * FROM Item WHERE MATCH(name, shortDes, longDesc) AGAINST ('" + searchQuery + "')";
     console.log(q)
     connection.query(q, function(err, rows, fields){
         if(!err) { 
