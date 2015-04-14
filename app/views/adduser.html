@@ -1,0 +1,59 @@
+<div>
+	<div class="row"></div>
+	<h4>Registration</h4>
+
+	<div class="row">
+	  <form class="col s12 l6">
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input id="firstName" type="text" class="validate" ng-model="adduserC.formData.firstName">
+	        <label for="firstName">First Name</label>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input id="lastName" type="text" class="validate" ng-model="adduserC.formData.lastName">
+	        <label for="lastName">Last Name</label>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input id="email" type="text" class="validate" ng-model="adduserC.formData.email">
+	        <label for="email">Email</label>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input id="password" type="text" class="validate" ng-model="adduserC.formData.password">
+	        <label for="password">Password</label>
+	      </div>
+	    </div>
+	     <div class="row">
+	      <div class="input-field col s12">
+	        <input id="phone" type="text" class="validate" ng-model="adduserC.formData.phone">
+	        <label for="phone">Phone Number</label>
+	      </div>
+	    </div>
+
+	    <h5>Do you agree with our terms?</h5>
+	    <div>
+	    	<p>
+			    <input type="checkbox" id="c1" />
+			    <label for="c1">Yes</label>
+			</p>
+			<p>
+			    <input type="checkbox" id="c2" />
+			    <label for="c2">No</label>
+			</p>
+	    </div>
+
+	    <div class="row"></div>
+
+	    <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="additemC.insert(additemC.formData)">
+	    	Submit
+		    <i class="mdi-content-send right"></i>
+		</button>
+
+	  </form>
+	</div>
+</div>

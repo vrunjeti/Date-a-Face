@@ -44,6 +44,11 @@ angular
         controller: 'AdditemCtrl',
         controllerAs: 'additemC'
       })
+      .when('/adduser', {
+        templateUrl: 'views/adduser.html',
+        controller: 'AdduserCtrl',
+        controllerAs: 'adduserC'
+      })
       .otherwise({
         redirectTo: '/'
       });
