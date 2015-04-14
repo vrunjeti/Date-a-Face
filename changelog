@@ -19,4 +19,4 @@ BACKEND SERVER (note all function changes have been tested unless otherwise stat
 FRONT END
 4/14:
 + changed query formatting in search and add item page to work for new api request format
-+ 
++ added a registration page along with controller  
