@@ -30,7 +30,7 @@ angular.module('411t2App')
 				})
 			.success(function(data){
 				vm.sresults = data;
-				vm.squery = '';
+				// vm.squery = '';
 		});
 
 	}

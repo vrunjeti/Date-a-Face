@@ -15,8 +15,12 @@ BACKEND SERVER (note all function changes have been tested unless otherwise stat
 + changed search query in sql.js to account for single quotes
 + added body-parser package to server.js
 + changed req.query.___ to req.body.___ for router.post in sql.js (so it can work directly with POST body)
+4/15 | 4/16:
++ changed POST /insert to include formatting query string for inserting into User table
 
 FRONT END
 4/14:
 + changed query formatting in search and add item page to work for new api request format
 + added a registration page along with controller  
+4/15 | 4/16 (it's late...):
++ can now add users from registration page

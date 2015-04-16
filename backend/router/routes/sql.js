@@ -13,6 +13,9 @@ var router = express.Router();
 router.post('/insert', function(req, res) {
     var table = req.body.table,
           attr = req.body.attr;
+
+    console.log('table: ' + table);
+    console.log('attr: ' + attr);
     // catch error
     if(typeof table === 'undefined' || typeof attr === 'undefined') {
         console.log("Invalid parameters!");
@@ -21,6 +24,9 @@ router.post('/insert', function(req, res) {
         var q = '';
         if(table === 'Item') {
             q = 'INSERT INTO Item (name, shortDes, longDesc, price, userId) VALUES (' +  attr + ')' + ';';  
+        }
+        else if(table === 'User'){
+            q = 'INSERT INTO User (firstName, lastName, email, phone, rating, password) VALUES (' +  attr + ')' + ';'; 
         }
         else {
             q = 'INSERT INTO ' + table + ' VALUES (' +  attr + ')' + ';';

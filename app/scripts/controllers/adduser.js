@@ -24,10 +24,12 @@ angular.module('411t2App')
 		* Translated to MySQL: INSERT INTO table VALUES (attr);
 		*/
 
+		// firstName, lastName, email, phone, rating, password
+
 		$http
 			.post(url + 'insert', {
 					table: 'User',
-					attr: '"' + formData.firstName + '","' + formData.lastName + '","' + formData.email + '",' + formData.password + ',' +formData.phone + ',' + 1 // 1 at end is userId, hardcoded for now
+					attr: '"' + formData.firstName + '","' + formData.lastName + '","' + formData.email + '",' + formData.phone + ',NULL,"' + formData.password + '"' // NULL is for rating
 			})
 			.success(function(){
 				alert('Item inserted.');
