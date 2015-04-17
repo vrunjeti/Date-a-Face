@@ -49,6 +49,11 @@ angular
         controller: 'AdduserCtrl',
         controllerAs: 'adduserC'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'loginC'
+      })
       .otherwise({
         redirectTo: '/'
       });
