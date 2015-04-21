@@ -2,6 +2,8 @@ var express = require('express');
 var cors = require('cors');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
+
 
 var app = express();
 app.use(cors());

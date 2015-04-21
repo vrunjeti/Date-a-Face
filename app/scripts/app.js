@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -57,6 +57,24 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+$httpProvider.interceptors.push(['$q', '$location', '$window', function ($q, $location, $window) {
+            return {
+                'request': function (config) {
+                    config.headers = config.headers || {};
+                    if ($window.sessionStorage.token) {
+                        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+                    }
+                    return config;
+                },
+                'responseError': function(response) {
+                    if(response.data.data === "Error Occured") {
+                        $location.path('/signin');
+                    }
+                    return $q.reject(response);
+                }
+            };
+        }]);
   });
   // .factory('Stuff', function($http){
   //     var myFactory = {};

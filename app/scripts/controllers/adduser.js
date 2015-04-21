@@ -8,24 +8,14 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('AdduserCtrl', function ($http) {
+  .controller('AdduserCtrl', function ($http, $window) {
     
 
     var vm = this;
 	var url = 'http://localhost:8000/sql/';
 
 	vm.insert = function(formData){
-		/**
-		* POST Route /insert 
-		* @params table - REQUIRED
-		* @params attr - REQUIRED
-		* Usage:
-		* GET /sql/insert?table=Item&attr="Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
-		* Translated to MySQL: INSERT INTO table VALUES (attr);
-		*/
-
-		// firstName, lastName, email, phone, rating, password
-
+/*
 		$http
 			.post(url + 'insert', {
 					table: 'User',
@@ -39,7 +29,24 @@ angular.module('411t2App')
 				formData.password = '';
 				formData.phone = '';
 			});
+*/
+		var url = 'http://localhost:8000/auth/signup';
+		$http
+		.post(url , {
+			firstName : formData.firstName, 
+			lastName : formData.lastName,
+			email : formData.email,
+			password : formData.password,
+			phone : formData.phone
+		})
+		.success(function(data){
+			if(!(data.message === "Error Occured")) {
+				$window.sessionStorage.token = data.token;	
+				$location.path('/search'); // redirect (search for now, then change to profile later)
+			} else {
+				//  need to display to user that their signup failed
+				formData.password = '';
+			}
+		});
 	};
-
-
   });

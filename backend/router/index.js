@@ -1,4 +1,4 @@
 module.exports = function (app) {
-    // like app.use(', router');
+    app.use('/auth', require('./routes/auth'));
     app.use('/sql', require('./routes/sql'));
 };

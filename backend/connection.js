@@ -4,8 +4,9 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'swag',
-    database : 'sail_db'
+    password : 'a',
+    database : 'sail_db',
+    multipleStatements: true
 });
 connection.connect();
 console.log("Connected to mysql db");
