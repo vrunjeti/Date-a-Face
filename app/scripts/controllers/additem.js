@@ -36,8 +36,12 @@ angular.module('411t2App')
 				formData.price = '';
 				formData.email = '';
 			});
+	};
+	vm.upload = function(formData)
+	{
+	$('.upload_form').append($.cloudinary.unsigned_upload_tag("ekt6gwpq", 
+  { cloud_name: 'mzheng6' }));
 	}
-
 
   });
 

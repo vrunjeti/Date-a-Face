@@ -35,7 +35,7 @@ angular.module('411t2App')
 				formData.email = '';
 				formData.password = '';
 			});
-	}
+	};
 
 
   });

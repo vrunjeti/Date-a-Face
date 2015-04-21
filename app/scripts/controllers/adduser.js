@@ -39,7 +39,7 @@ angular.module('411t2App')
 				formData.password = '';
 				formData.phone = '';
 			});
-	}
+	};
 
 
   });
