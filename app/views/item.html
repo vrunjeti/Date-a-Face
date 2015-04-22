@@ -8,19 +8,18 @@
               <img src="images/yeoman.png">
             </div>
             <div class="card-content">
-              <h4>Item Name</h4>
+              <h4>{{itemC.itemData[0].name}}</h4>
             </div>
           </div>
 	</div>
 
 	<div class="col l8">
 		<div class="row">
-			<h3>Item Name</h3>
-			<h4>Price: {{itemC.inventory["itemId":itemC.id].price}}</h4>
-			<h4>Seller: {{seller}} | <span>Rating: {{rating}}</span> </h4>
-
-			<h4>Description:</h4>
-			<h5>description_long</h5>
+			<h3>Item Name: {{itemC.itemData[0].name}} </h3>
+			<h4>Price: ${{itemC.itemData[0].price}}</h4>
+			<h4>Seller: {{itemC.sellerData[0].firstName}} {{itemC.sellerData[0].lastName}}</h4>
+			<h4>About: {{itemC.itemData[0].shortDes}}</h4>
+			<h4>Detailed Description: {{itemC.itemData[0].longDesc}}</h4>
 		</div>
 	</div>
 </div>
