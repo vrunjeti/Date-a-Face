@@ -13,8 +13,7 @@ var router = express.Router();
 */
 router.delete('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
-    // we'll take one param to identify the item we're deleting
-    var item_id = req.body.itemid;
+    var item_id = req.query.itemid;
     var q_del = "DELETE FROM Item WHERE id="+ item_id +';';
     connection.query(q_del, function (err, rows) { 
         if(err) {
@@ -36,8 +35,7 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
 */
 router.put('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
-    // we'll take one param to identify the item we're updating
-    var item_id = req.body.itemid;
+    var item_id = req.query.itemid;
     var q_up = "UPDATE Item SET "+ attr +" WHERE id="+ itemid +';';
     connection.query(q_up, function (err, rows) { 
         if(err) {
@@ -57,7 +55,6 @@ router.put('/profile/item', isAuthenticated, function (req, res, next) {
 */
 router.delete('/profile/all', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
-    // we'll take one param to identify the item we're deleting
     var id = req.userid;
     var q_del = "DELETE FROM User WHERE id="+ id +';';
     connection.query(q_del, function (err, rows) { 
@@ -85,8 +82,7 @@ router.get('/profile/logout', isAuthenticated, function (req, res, next) {
 */
 router.get('/profile', isAuthenticated, function (req, res, next) {
     console.log("Getting Profile!");
-    console.log(req.userid);
-    var id = req.userid; // we'll use this to identify our loggedin user
+    var id = req.userid;
     var q_info = "SELECT * FROM User WHERE  id="+ id +';'; // get all the user's info
     connection.query(q_info, function (err, rows) { 
         if(err) {
@@ -105,10 +101,8 @@ router.get('/profile', isAuthenticated, function (req, res, next) {
 */
 router.get('/profile/items', isAuthenticated, function (req, res, next) {
     console.log("Getting items!");
-    console.log(req.userid);
-    var id = req.userid; // we'll use this to identify our loggedin user
+    var id = req.userid;
     var q_items =  "SELECT * FROM Item INNER JOIN User ON Item.userId=User.id WHERE User.id="+ id +';'; // get all of the user's associated items
-    console.log(q_items);
     connection.query(q_items, function (err, rows) { 
         if(err) {
             res.json({message: "Error Occured"});
