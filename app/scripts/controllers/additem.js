@@ -15,7 +15,7 @@ angular.module('411t2App')
 
 	vm.insert = function(formData){
 		/**
-		* POST Route /insert 
+		* POST Route /insert
 		* @params table - REQUIRED
 		* @params attr - REQUIRED
 		* Usage:
@@ -37,9 +37,10 @@ angular.module('411t2App')
 				formData.email = '';
 			});
 	};
+
 	vm.upload = function(formData)
 	{
-	$('.upload_form').append($.cloudinary.unsigned_upload_tag("ekt6gwpq", 
+	$('.upload_form').append($.cloudinary.unsigned_upload_tag("ekt6gwpq",
   { cloud_name: 'mzheng6' }));
 	}
 
