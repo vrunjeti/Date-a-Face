@@ -1,7 +1,7 @@
 var connection = require('../../connection');
 var express = require('express');
 var jwt = require('jwt-simple');
-var jwt2 = require('jsonwebtokens');
+var jwt2 = require('jsonwebtoken');
 var settings = require('../../settings');
 
 var router = express.Router();
@@ -25,6 +25,30 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
         }
     });
 });
+
+/** 
+* PUT /profile/item
+* Params: {itemid} <- needs the itemid so we know which item to UPDATE
+* @params attr - REQUIRED
+* Usage:
+* PUT /sql/update?attr=firstName='Bob'
+* Returns a JSON object
+*/
+router.put('/profile/item', isAuthenticated, function (req, res, next) {
+    console.log("Deleting Item!");
+    // we'll take one param to identify the item we're updating
+    var item_id = req.body.itemid;
+    var q_up = "UPDATE Item SET "+ attr +" WHERE id="+ itemid +';';
+    connection.query(q_up, function (err, rows) { 
+        if(err) {
+            res.json({message: "Error Occured"});
+        }
+        else {
+            res.json({message: "Success"});
+        }
+    });
+});
+
 
 /** 
 * DELETE /profile/all 
@@ -70,7 +94,7 @@ router.get('/profile', isAuthenticated, function (req, res, next) {
         }
         else {
             console.log(rows[0]);
-            res.json({message: "Success" payload: rows[0]});
+            res.json({message: "Success", payload: rows[0]});
         }
     });
 });
@@ -91,7 +115,7 @@ router.get('/profile/items', isAuthenticated, function (req, res, next) {
         }
         else {
             console.log(rows[0]);
-            res.json({message: "Success" payload: rows[0]});
+            res.json({message: "Success", payload: rows[0]});
         }
     });
 });

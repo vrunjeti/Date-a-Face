@@ -8,7 +8,6 @@ firstName VARCHAR(50) NOT NULL,
 lastName VARCHAR(50) NOT NULL, 
 email VARCHAR(50) NOT NULL, 
 phone VARCHAR(10),  
-rating FLOAT,
 password VARCHAR(50) NOT NULL
 );
 
