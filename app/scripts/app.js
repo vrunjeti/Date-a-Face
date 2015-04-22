@@ -54,6 +54,11 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'loginC'
       })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profileC'
+      })
       .otherwise({
         redirectTo: '/'
       });
