@@ -22,7 +22,7 @@ angular.module('411t2App')
 		* Usage:
 		* GET item/search?query='something to search'
 		*/
-	/*
+	
                             $http
                                 .get(url + 'item/search', {
                                     params: {
@@ -33,9 +33,9 @@ angular.module('411t2App')
                                     vm.sresults = data;
                                     // vm.squery = '';
                                 });
-*/
-                        // note temp code
-	           $http
+
+                    // note temp code
+	         /*  $http
                         .get("http://localhost:8000/auth/profile/items", {
                             params: {
                                 query: vm.squery
@@ -45,7 +45,7 @@ angular.module('411t2App')
                             //vm.sresults = data;
                             // vm.squery = '';
                         });
-
+             */
             };
   
   });
