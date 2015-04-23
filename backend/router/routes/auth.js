@@ -15,6 +15,7 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
     var item_id = req.query.itemid;
     var q_del = "DELETE FROM Item WHERE id="+ item_id +';';
+    console.log(q_del);
     connection.query(q_del, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
@@ -83,6 +84,7 @@ router.delete('/profile/all', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
     var id = req.userid;
     var q_del = "DELETE FROM User WHERE id="+ id +';';
+    console.log(q_del);
     connection.query(q_del, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
@@ -110,6 +112,7 @@ router.get('/profile', isAuthenticated, function (req, res, next) {
     console.log("Getting Profile!");
     var id = req.userid;
     var q_info = "SELECT * FROM User WHERE  id="+ id +';'; // get all the user's info
+    console.log(q_info);
     connection.query(q_info, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
@@ -129,6 +132,7 @@ router.get('/profile/items', isAuthenticated, function (req, res, next) {
     console.log("Getting items!");
     var id = req.userid;
     var q_items =  "SELECT Item.* FROM Item INNER JOIN User ON Item.userId=User.id WHERE User.id="+ id +';'; // get all of the user's associated items
+    console.log(q_items);
     connection.query(q_items, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
@@ -150,6 +154,7 @@ router.get('/test', isAuthenticated, function (req, res, next) {
 router.post('/signup', function (req, res, next) {
     console.log('Signing Up:');
     var q = "SELECT * FROM User WHERE email = ? ;"
+    console.log(q);
     connection.query(q, connection.escape(req.body.email), function (err, rows, fields) {
         if(err) {
             console.log("Sign Up: Error Occured");
@@ -194,6 +199,7 @@ router.post('/login', function (req, res, next) {
     console.log('Loggin In:');
     var q = "SELECT * FROM User WHERE email= "+connection.escape(req.body.email)+';';
     //console.log(connection.escape(req.body.email));
+    console.log(q);
     connection.query(q, function (err, rows, fields) {
         if(err) {
             console.log("Log in: Error Occured");
