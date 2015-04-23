@@ -15,7 +15,8 @@
     "connect-flash": "~0.1.1",
     "jsonwebtoken": "~5.0.0",
     "jwt-simple": "~0.3.0",
-    "cheerio": "~0.19.0"
+    "cheerio": "~0.19.0",
+    "keyword-extractor": "0.0.12"
   },
   "devDependencies": {
     "grunt": "^0.4.1",
