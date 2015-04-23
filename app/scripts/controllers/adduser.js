@@ -8,7 +8,7 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('AdduserCtrl', function ($http, $window) {
+  .controller('AdduserCtrl', function ($http, $window, $location) {
     
 
     var vm = this;
@@ -42,7 +42,7 @@ angular.module('411t2App')
 		.success(function(data){
 			if(!(data.message === "Error Occured")) {
 				$window.sessionStorage.token = data.token;	
-				$location.path('/search'); // redirect (search for now, then change to profile later)
+				$location.path('/profile'); // redirect (search for now, then change to profile later)
 			} else {
 				//  need to display to user that their signup failed
 				formData.password = '';

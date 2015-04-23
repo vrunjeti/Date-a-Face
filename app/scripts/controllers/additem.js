@@ -47,7 +47,7 @@ angular.module('411t2App')
 					// attr: '"' + formData.name + '","' + formData.shortDes + '","' + formData.longDesc + '",' + formData.price + ',' + 1 // 1 at end is userId, hardcoded for now
 			})
 			.success(function(data){
-				alert('Item inserted.');
+				//alert('Item inserted.');
 				formData.name = '';
 				formData.longDesc = '';
 				formData.shortDes = '';

@@ -8,7 +8,7 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('UpdateitemCtrl', function ($http, $scope, $routeParams) {
+  .controller('UpdateitemCtrl', function ($http, $scope, $routeParams, $location) {
     // bind 'this' to vm (view-model)
     var vm = this;
     var url = 'http://localhost:8000/';
@@ -39,16 +39,19 @@ angular.module('411t2App')
         $http
             .put(url + 'auth/profile/item', {
                     item_id: vm.itemId,
-                    attr: '"name=' + formData.name + '","' + formData.shortDes + '","' + formData.longDesc + '",' + formData.price
+                    name: formData.name,
+                    price: formData.price,
+                    shortDes: formData.shortDes,
+                    longDesc: formData.longDesc
             })
             .success(function(){
-                alert('Item updated.');
+                //alert('Item updated.');
                 formData.name = '';
                 formData.longDesc = '';
                 formData.shortDes = '';
                 formData.price = '';
                 formData.email = '';
-                $location.path('/item/' + vm.itemId);
+                $location.path('/profile');
             });
     };
   });

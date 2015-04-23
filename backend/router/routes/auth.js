@@ -33,8 +33,13 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
 router.post('/profile/item', isAuthenticated ,function (req, res, next) {
     console.log("Inserting Item");
     var userid = req.userid;
-    var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid) VALUES (?, ?, ?, ?, ?);";
-    connection.query(q_add, [connection.escape(req.body.name), connection.escape(req.body.shortDes), connection.escape(req.body.longDesc), req.body.price, userid] ,function (err, rows) {
+    var name = req.body.name;
+    var shortDes = req.body.shortDes;
+    var longDesc = req.body.longDesc;
+    var price = req.body.price;
+    var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid) VALUES ("+'\''+name+'\','+'\''+shortDes+'\','+'\''+longDesc+'\','+price+','+userid+");";
+    console.log(q_add);
+    connection.query(q_add, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
         }
@@ -55,11 +60,12 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
 */
 router.put('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Updating Item!");
-    var item_id = req.body.itemid;
-    var attr = req.body.attr;
-    var q_up = "UPDATE Item SET "+ attr +" WHERE id="+ item_id +';';
+    var itemid = req.body.item_id;
+    var q_up = "UPDATE Item SET name=\'"+req.body.name+'\', shortDes=\''+req.body.shortDes+'\', longDesc=\''+req.body.longDesc+'\', price='+req.body.price+' WHERE id='+itemid+';';
+    console.log(q_up);
     connection.query(q_up, function (err, rows) {
         if(err) {
+            console.log(err);
             res.json({message: "Error Occured"});
         }
         else {
@@ -67,7 +73,6 @@ router.put('/profile/item', isAuthenticated, function (req, res, next) {
         }
     });
 });
-
 
 /**
 * DELETE /profile/all
@@ -157,9 +162,14 @@ router.post('/signup', function (req, res, next) {
                 res.json({message: "User Exists"});
             }
             else {
-
-                var q = 'INSERT INTO User (firstName, lastName, email, password, phone) VALUES ( ?, ?, ?, ?, ? );';
-                connection.query(q, [connection.escape(req.body.firstName), connection.escape(req.body.lastName), connection.escape(req.body.email), connection.escape(req.body.password), connection.escape(req.body.phone)] , function (err, results) {
+                var fName = req.body.firstName;
+                var lName = req.body.lastName;
+                var email = req.body.email;
+                var pass = req.body.password;
+                var phone = req.body.phone;
+                var q = "INSERT INTO User(firstName, lastName, email, password, phone) VALUES ("+'\''+fName+'\','+'\''+lName+'\','+'\''+email+'\','+'\''+pass+'\','+'\''+phone+'\''+");";
+                console.log(q);
+                connection.query(q, function (err, results) {
                     if(err) {
                         console.log("Sign Up (sql): Error Occured");
                         res.json({message: "Error Occured"});
@@ -224,7 +234,6 @@ function isAuthenticated (req, res, next) {
     bearerToken = bearer[1];
     req.token = bearerToken;
     var decoded = jwt.decode(req.token, settings.secret);
-    console.log("Decoded: ");
     console.log(decoded);
     var q = "SELECT * FROM User WHERE id = ? ;"
     connection.query(q, decoded.id ,function (err, rows, fields) {
