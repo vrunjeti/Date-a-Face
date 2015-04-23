@@ -6,7 +6,7 @@ var settings = require('../../settings');
 
 var router = express.Router();
 
-/** 
+/**
 * DELETE /profile/item
 * Params: {itemid} <- needs the itemid so we know which item to delete, this id should be stored with the item on the view.
 * Returns a JSON object.
@@ -15,7 +15,7 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
     var item_id = req.query.itemid;
     var q_del = "DELETE FROM Item WHERE id="+ item_id +';';
-    connection.query(q_del, function (err, rows) { 
+    connection.query(q_del, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
         }
@@ -25,7 +25,7 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
     });
 });
 
-/** 
+/**
 * PUT /profile/item
 * Params: {itemid} <- needs the itemid so we know which item to UPDATE
 * @params attr - REQUIRED
@@ -37,7 +37,7 @@ router.put('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
     var item_id = req.query.itemid;
     var q_up = "UPDATE Item SET "+ attr +" WHERE id="+ itemid +';';
-    connection.query(q_up, function (err, rows) { 
+    connection.query(q_up, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
         }
@@ -48,8 +48,8 @@ router.put('/profile/item', isAuthenticated, function (req, res, next) {
 });
 
 
-/** 
-* DELETE /profile/all 
+/**
+* DELETE /profile/all
 * No params are needed, deletes the whole account.
 * Returns a JSON object. You should probably redirect on success and call localStorage.clear(); to logout the user.
 */
@@ -57,7 +57,7 @@ router.delete('/profile/all', isAuthenticated, function (req, res, next) {
     console.log("Deleting Item!");
     var id = req.userid;
     var q_del = "DELETE FROM User WHERE id="+ id +';';
-    connection.query(q_del, function (err, rows) { 
+    connection.query(q_del, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
         }
@@ -84,7 +84,7 @@ router.get('/profile', isAuthenticated, function (req, res, next) {
     console.log("Getting Profile!");
     var id = req.userid;
     var q_info = "SELECT * FROM User WHERE  id="+ id +';'; // get all the user's info
-    connection.query(q_info, function (err, rows) { 
+    connection.query(q_info, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
         }
@@ -102,14 +102,14 @@ router.get('/profile', isAuthenticated, function (req, res, next) {
 router.get('/profile/items', isAuthenticated, function (req, res, next) {
     console.log("Getting items!");
     var id = req.userid;
-    var q_items =  "SELECT * FROM Item INNER JOIN User ON Item.userId=User.id WHERE User.id="+ id +';'; // get all of the user's associated items
-    connection.query(q_items, function (err, rows) { 
+    var q_items =  "SELECT Item.* FROM Item INNER JOIN User ON Item.userId=User.id WHERE User.id="+ id +';'; // get all of the user's associated items
+    connection.query(q_items, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});
         }
         else {
-            console.log(rows[0]);
-            res.json({message: "Success", payload: rows[0]});
+            console.log(rows);
+            res.json({message: "Success", payload: rows});
         }
     });
 });
@@ -124,7 +124,7 @@ router.get('/test', isAuthenticated, function (req, res, next) {
 router.post('/signup', function (req, res, next) {
     console.log('Signing Up:');
     var q = "SELECT * FROM User WHERE email = ? ;"
-    connection.query(q, connection.escape(req.body.email), function (err, rows, fields) { 
+    connection.query(q, connection.escape(req.body.email), function (err, rows, fields) {
         if(err) {
             console.log("Sign Up: Error Occured");
             console.log(err);
@@ -136,8 +136,8 @@ router.post('/signup', function (req, res, next) {
                 res.json({message: "User Exists"});
             }
             else {
-  
-                var q = 'INSERT INTO User (firstName, lastName, email, password, phone) VALUES ( ?, ?, ?, ?, ? );'; 
+
+                var q = 'INSERT INTO User (firstName, lastName, email, password, phone) VALUES ( ?, ?, ?, ?, ? );';
                 connection.query(q, [connection.escape(req.body.firstName), connection.escape(req.body.lastName), connection.escape(req.body.email), connection.escape(req.body.password), connection.escape(req.body.phone)] , function (err, rows) {
                     if(err) {
                         console.log("Sign Up (sql): Error Occured");
@@ -163,7 +163,7 @@ router.post('/login', function (req, res, next) {
     console.log('Loggin In:');
     var q = "SELECT * FROM User WHERE email= "+connection.escape(req.body.email)+';';
     //console.log(connection.escape(req.body.email));
-    connection.query(q, function (err, rows, fields) { 
+    connection.query(q, function (err, rows, fields) {
         if(err) {
             console.log("Log in: Error Occured");
             console.log(err);
@@ -206,7 +206,7 @@ function isAuthenticated (req, res, next) {
     console.log("Decoded: ");
     console.log(decoded);
     var q = "SELECT * FROM User WHERE id = ? ;"
-    connection.query(q, decoded.id ,function (err, rows, fields) { 
+    connection.query(q, decoded.id ,function (err, rows, fields) {
         if(rows.length) {
             console.log("Auth Success");
             req.userid = decoded.id;
