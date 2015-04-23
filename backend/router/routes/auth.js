@@ -39,7 +39,8 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
             res.json({message: "Error Occured"});
         }
         else {
-            res.json({message: "Success"});
+            console.log(rows);
+            res.json({message: "Success", id: rows});
         }
     });
 });
@@ -53,9 +54,10 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
 * Returns a JSON object
 */
 router.put('/profile/item', isAuthenticated, function (req, res, next) {
-    console.log("Deleting Item!");
-    var item_id = req.query.itemid;
-    var q_up = "UPDATE Item SET "+ attr +" WHERE id="+ itemid +';';
+    console.log("Updating Item!");
+    var item_id = req.body.itemid;
+    var attr = req.body.attr;
+    var q_up = "UPDATE Item SET "+ attr +" WHERE id="+ item_id +';';
     connection.query(q_up, function (err, rows) {
         if(err) {
             res.json({message: "Error Occured"});

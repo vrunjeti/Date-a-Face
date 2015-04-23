@@ -8,7 +8,7 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('ProfileCtrl', function ($http, $scope) {
+  .controller('ProfileCtrl', function ($http, $scope, $window, $location) {
 
     var vm = this;
     var url = 'http://localhost:8000/auth/'
@@ -34,5 +34,28 @@ angular.module('411t2App')
             });
     }
 
+    vm.logout = function(){
+        $http
+            .get(url + 'profile/logout')
+            .success(function(data){
+                vm.logoutData = data;
+                if(data.message === "Log Out") {
+                    $window.sessionStorage.clear();
+                    $location.path('/login');
+                }
+            });
+    }
+
+    vm.deleteItem = function(itemId) {
+        $http
+            .delete(url + 'profile/item', {
+                params: {
+                    itemid: itemId
+                }
+            })
+            .success(function(data){
+                vm.loadUserItems();
+            });
+    }
 
   });

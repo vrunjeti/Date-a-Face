@@ -15,18 +15,25 @@ angular.module('411t2App')
 
 	vm.login = function(formData){
 
-		$http
-			.post(url, {
-				email: formData.email,
-				password: formData.password
-			})
-			.success(function(data){
-				if(!(data.message === "Error Occured")) {
-					$window.sessionStorage.token = data.token;
-					$location.path('/profile'); // redirect (search for now, then change to profile later)
-				} else {
-					vm.errorMsg = "Incorrect email or password. Please try again.";
-				}
-			});
+		if(formData.email.replace(/.*@/, "") !== "illinois.edu"){
+			vm.errorMsg = "Sorry, only @illinois.edu emails accepted at this time."
+		}
+		else {
+			$http
+				.post(url, {
+					email: formData.email,
+					password: formData.password
+				})
+				.success(function(data){
+					if(!(data.message === "Error Occured")) {
+						$window.sessionStorage.token = data.token;
+						$location.path('/profile'); // redirect (search for now, then change to profile later)
+					} else {
+						vm.errorMsg = "Incorrect email or password. Please try again.";
+					}
+				});
+		}
+
 	};
+
   });

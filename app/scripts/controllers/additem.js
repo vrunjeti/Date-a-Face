@@ -8,10 +8,10 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('AdditemCtrl', function ($http, $scope) {
+  .controller('AdditemCtrl', function ($http, $scope, $location) {
     // bind 'this' to vm (view-model)
 	var vm = this;
-	var url = 'http://localhost:8000/sql/';
+	var url = 'http://localhost:8000/auth/';
 
 	$scope.fileName = 'balhss';
 
@@ -38,21 +38,27 @@ angular.module('411t2App')
 		*/
 
 		$http
-			.post(url + 'insert', {
-					table: 'Item',
-					attr: '"' + formData.name + '","' + formData.shortDes + '","' + formData.longDesc + '",' + formData.price + ',' + 1 // 1 at end is userId, hardcoded for now
+			.post(url + 'profile/item', {
+				name: formData.name,
+				price: formData.price,
+				shortDes: formData.shortDes,
+				longDesc: formData.longDesc
+					// table: 'Item',
+					// attr: '"' + formData.name + '","' + formData.shortDes + '","' + formData.longDesc + '",' + formData.price + ',' + 1 // 1 at end is userId, hardcoded for now
 			})
-			.success(function(){
+			.success(function(data){
 				alert('Item inserted.');
 				formData.name = '';
 				formData.longDesc = '';
 				formData.shortDes = '';
 				formData.price = '';
-				formData.email = '';
+				// formData.email = '';
+				// vm.postData = data.id.insertId;
+				$location.path('/item/' + data.id.insertId);
 			});
 	};
 
-	vm.upload = function(formData)
+	vm.upload = function()
 	{
 	$('.upload_form').append($.cloudinary.unsigned_upload_tag("ekt6gwpq",
   { cloud_name: 'mzheng6' }));

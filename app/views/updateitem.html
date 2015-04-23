@@ -1,0 +1,54 @@
+<div>
+    <div class="row"></div>
+    <h4>Update Item</h4>
+
+    <div class="row">
+      <form class="col s12 l6">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="itemname" type="text" class="validate valid" ng-model="updateItemC.formData.name">
+            <label class="active" for="itemname">Item Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="price" type="text" class="validate valid" ng-model="updateItemC.formData.price">
+            <label class="active" for="price">Item Price (in $)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="descshort" type="text" class="validate valid" ng-model="updateItemC.formData.shortDes">
+            <label class="active" for="descshort">Short Description</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="desclong" type="text" class="validate valid materialize-textarea" ng-model="updateItemC.formData.longDesc"></textarea>
+            <label class="active" for="desclong">Long Description</label>
+          </div>
+        </div>
+
+
+        <div class="row"></div>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="updateItemC.updateItem(updateItemC.formData)">
+            Submit
+            <i class="mdi-content-send right"></i>
+        </button>
+
+      </form>
+
+      <div class="col s12 l6">
+          <form action="#">
+            <div class="file-field input-field">
+              <input class="file-path validate" type="text"/>
+              <div class="btn">
+                <span>File</span>
+                <input type="file" />
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+</div>

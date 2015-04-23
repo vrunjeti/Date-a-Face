@@ -59,6 +59,11 @@ angular
         controller: 'ProfileCtrl',
         controllerAs: 'profileC'
       })
+      .when('/updateitem/:itemId', {
+        templateUrl: 'views/updateitem.html',
+        controller: 'UpdateitemCtrl',
+        controllerAs: 'updateItemC'
+      })
       .otherwise({
         redirectTo: '/'
       });
