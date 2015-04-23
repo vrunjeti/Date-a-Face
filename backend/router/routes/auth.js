@@ -26,6 +26,25 @@ router.delete('/profile/item', isAuthenticated, function (req, res, next) {
 });
 
 /**
+* POST /profile/item
+* params: {name, shortDes, longDesc, price}
+* You only need to pass the above parameters into the request
+*/
+router.post('/profile/item', isAuthenticated ,function (req, res, next) {
+    console.log("Inserting Item");
+    var userid = req.userid;
+    var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid) VALUES (?, ?, ?, ?, ?);";
+    connection.query(q_add, [connection.escape(req.body.name), connection.escape(req.body.shortDes), connection.escape(req.body.longDesc), req.body.price, userid] ,function (err, rows) {
+        if(err) {
+            res.json({message: "Error Occured"});
+        }
+        else {
+            res.json({message: "Success"});
+        }
+    });
+});
+
+/**
 * PUT /profile/item
 * Params: {itemid} <- needs the itemid so we know which item to UPDATE
 * @params attr - REQUIRED
@@ -131,24 +150,24 @@ router.post('/signup', function (req, res, next) {
             res.json({message: "Error Occured"});
         }
         else {
-            if(rows.length) {
+            if(rows.length > 0) {
                 console.log("User Exists");
                 res.json({message: "User Exists"});
             }
             else {
 
                 var q = 'INSERT INTO User (firstName, lastName, email, password, phone) VALUES ( ?, ?, ?, ?, ? );';
-                connection.query(q, [connection.escape(req.body.firstName), connection.escape(req.body.lastName), connection.escape(req.body.email), connection.escape(req.body.password), connection.escape(req.body.phone)] , function (err, rows) {
+                connection.query(q, [connection.escape(req.body.firstName), connection.escape(req.body.lastName), connection.escape(req.body.email), connection.escape(req.body.password), connection.escape(req.body.phone)] , function (err, results) {
                     if(err) {
                         console.log("Sign Up (sql): Error Occured");
                         res.json({message: "Error Occured"});
                     }
                     else {
                         console.log('Sign Up: Success');
-                        var user = rows[0];
+                        var user = results.insertId;
                         var payload = {
-                            id : user.id,
-                            email : user.email
+                            id : user,
+                            email : req.body.email
                         };
                         var token = jwt.encode(payload, settings.secret);
                         res.json({message: "Success", token: token});
