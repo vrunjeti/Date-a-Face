@@ -47,6 +47,17 @@ angular.module('411t2App')
             })
     }
 
+    vm.getSuggestion = function(formData) {
+        $http.post(url + '/adv/pricesuggestion', {
+                    name: formData.name,
+                    shortDes: formData.shortDes,
+                    longDesc: formData.longDesc
+            })
+            .success(function(data) {
+                vm.suggestion = data.message;
+            });
+    };
+
     vm.updateItem = function(formData){
         $http
             .put(url + 'auth/profile/item', {
