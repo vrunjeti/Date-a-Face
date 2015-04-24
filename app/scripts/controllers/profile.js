@@ -14,8 +14,11 @@ angular.module('411t2App')
     var url = 'http://localhost:8000/auth/'
 
     $scope.$on('$viewContentLoaded', function() {
-      vm.loadProfile();
-      vm.loadUserItems();
+        if(!$window.sessionStorage.token){
+            $location.path('/login');
+        }
+        vm.loadProfile();
+        vm.loadUserItems();
     });
 
     vm.loadProfile = function(){

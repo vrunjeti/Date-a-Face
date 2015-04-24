@@ -8,7 +8,7 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('UpdateitemCtrl', function ($http, $scope, $routeParams, $location) {
+  .controller('UpdateitemCtrl', function ($http, $scope, $routeParams, $location, $window) {
     // bind 'this' to vm (view-model)
     var vm = this;
     var url = 'http://localhost:8000/';
@@ -16,6 +16,18 @@ angular.module('411t2App')
     vm.formData = {};
 
     $scope.$on('$viewContentLoaded', function(){
+
+        if(!$window.sessionStorage.token){
+            $location.path('/login');
+        }
+
+        // $http
+        //     .get(url + 'auth/profile')
+        //     .error(function(status) {
+        //         if(status === 500);
+        //             $location.path('/login');
+        //     });
+
         vm.getItem().success(function(data){
             vm.itemData = data;
             vm.formData.name = data[0].name;
