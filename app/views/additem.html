@@ -42,7 +42,7 @@
 		    <i class="mdi-content-send right"></i>
 		</button>
 
-		<a class="waves-effect waves-light btn orange" style = "margin-left: 20px">Suggest Price</a>
+		 <a class="waves-effect waves-light btn orange" style = "margin-left: 20px" ng-click = "addItemC.getSuggestion(addItemC.formData)">Suggest Price</a>
 
 		<h5>{{additemC.erritem}}</h5>
 		<h5>{{additemC.errprice}}</h5>
@@ -50,6 +50,8 @@
 		<h5>{{additemC.errlong}}</h5>
 
 	  </form>
+
+	  <h5>Suggested Price is: {{addItemC.suggestion}}</h5>
 
 <!--  <div class="col s12 l6">
   		  <form action="#">
