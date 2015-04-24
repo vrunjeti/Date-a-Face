@@ -41,16 +41,16 @@ angular.module('411t2App')
 		vm.objectURL = $window.URL.createObjectURL(vm.file);
 	});
 
-	   vm.getSuggestion = function(formData) {
-        $http.post(url + '/adv/pricesuggestion', {
+	vm.getSuggestion = function(formData) {
+                $http.post(url + '/adv/pricesuggestion', {
                     name: formData.name,
                     shortDes: formData.shortDes,
                     longDesc: formData.longDesc
-            })
-            .success(function(data) {
-                vm.suggestion = data.message;
-            });
-    };
+                })
+                .success(function(data) {
+                    vm.suggestion = data.message;
+                });
+            };
 
 	vm.insert = function(formData){
 		/**
