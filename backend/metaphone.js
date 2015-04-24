@@ -1,3 +1,6 @@
+
+// ALGORITHM
+
 var vowels = function(c) {
 	return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c =='u');
 };
@@ -293,3 +296,5 @@ var metaphrase = function(phrase) {
     }
     return retval;
 };
+
+module.exports.metaphrase = metaphrase;

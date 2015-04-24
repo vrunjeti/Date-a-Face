@@ -18,36 +18,36 @@ angular.module('411t2App')
 	$scope.$on('$viewContentLoaded', function(){
 		vm.loadEverything();
 	});
-	
+
 	vm.loadEverything = function(){
 		vm.info().success(function(data){
 			vm.itemData = data;
 			vm.seller(data[0].userId)
-		})
+		});
 	}
 
 	vm.info = function()
 	{
 		return $http.get(url + 'select', {
-				params: { 
-					table: 'Item', 
-					attr: '*', 
+				params: {
+					table: 'Item',
+					attr: '*',
 					cond: 'id=' + vm.id
 				}
 			})
 	}
-			
+
 	vm.seller = function (userId)
 	{
 		$http.get(url + 'select', {
-				params: { 
-					table: 'User', 
-					attr: '*', 
+				params: {
+					table: 'User',
+					attr: '*',
 					cond: 'id=' + userId
 				}
 			})
 			.success(function(data){
 				vm.sellerData = data;
-			})
+			});
 	}
 });

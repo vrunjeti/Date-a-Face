@@ -3,6 +3,7 @@ var express = require('express');
 var jwt = require('jwt-simple');
 var jwt2 = require('jsonwebtoken');
 var settings = require('../../settings');
+var meta= require('../../metaphone');
 
 var router = express.Router();
 
@@ -38,17 +39,27 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
     var shortDes = req.body.shortDes;
     var longDesc = req.body.longDesc;
     var price = req.body.price;
-    var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid) VALUES ("+'\''+name+'\','+'\''+shortDes+'\','+'\''+longDesc+'\','+price+','+userid+");";
-    console.log(q_add);
-    connection.query(q_add, function (err, rows) {
-        if(err) {
-            res.json({message: "Error Occured"});
-        }
-        else {
-            console.log(rows);
-            res.json({message: "Success", id: rows});
-        }
-    });
+    if(userid === 'undefined' || name === 'undefined' || shortDes === 'undefined' || longDesc === 'undefined' || price === 'undefined') {
+        res.json({message: "Error Occured"});
+    }
+    else {
+        var longphrase = meta.metaphrase(name +' '+ shortDes +' '+ longDesc);
+        longphrase = longphrase.replace(/[^a-zA-Z ]/g, "");
+        shortDes = shortDes.replace(/[^a-zA-Z ]/g, "");
+        longDesc = longDesc.replace(/[^a-zA-Z ]/g, "");
+        name = name.replace(/[^a-zA-Z ]/g, "");
+        var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid, phonetic) VALUES ("+'\''+name+'\','+'\''+shortDes+'\','+'\''+longDesc+'\','+price+','+userid+',\''+longphrase+'\''+");";
+        console.log(q_add);
+        connection.query(q_add, function (err, rows) {
+            if(err) {
+                res.json({message: "Error Occured"});
+            }
+            else {
+                console.log(rows);
+                res.json({message: "Success", id: rows});
+            }
+        });
+    }
 });
 
 /**
@@ -61,18 +72,30 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
 */
 router.put('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Updating Item!");
-    var itemid = req.body.item_id;
-    var q_up = "UPDATE Item SET name=\'"+req.body.name+'\', shortDes=\''+req.body.shortDes+'\', longDesc=\''+req.body.longDesc+'\', price='+req.body.price+' WHERE id='+itemid+';';
-    console.log(q_up);
-    connection.query(q_up, function (err, rows) {
-        if(err) {
-            console.log(err);
-            res.json({message: "Error Occured"});
-        }
-        else {
-            res.json({message: "Success"});
-        }
-    });
+    var name = req.body.name;
+    var shortDes = req.body.shortDes;
+    var longDesc = req.body.longDesc;
+    var longphrase = meta.metaphrase(name +' '+ shortDes +' '+ longDesc);    
+    if(name === 'undefined' || shortDes === 'undefined' || longDesc === 'undefined' || price === 'undefined') {
+        res.json({message: "Error Occured"});
+    }
+    else {
+        longphrase = longphrase.replace(/[^a-zA-Z ]/g, "");
+        shortDes = shortDes.replace(/[^a-zA-Z ]/g, "");
+        longDesc = longDesc.replace(/[^a-zA-Z ]/g, "");
+        name = name.replace(/[^a-zA-Z ]/g, "");
+        var q_up = "UPDATE Item SET name=\'"+name+'\', shortDes=\''+shortDes+'\', longDesc=\''+longDesc+'\', price='+req.body.price+', phonetic=\''+longphrase+'\' WHERE id='+req.body.item_id+';';
+        console.log(q_up);
+        connection.query(q_up, function (err, rows) {
+            if(err) {
+                console.log(err);
+                res.json({message: "Error Occured"});
+            }
+            else {
+                res.json({message: "Success"});
+            }
+        });
+    }
 });
 
 /**
@@ -153,46 +176,55 @@ router.get('/test', isAuthenticated, function (req, res, next) {
 
 router.post('/signup', function (req, res, next) {
     console.log('Signing Up:');
-    var q = "SELECT * FROM User WHERE email = ? ;"
-    console.log(q);
-    connection.query(q, connection.escape(req.body.email), function (err, rows, fields) {
-        if(err) {
-            console.log("Sign Up: Error Occured");
-            console.log(err);
-            res.json({message: "Error Occured"});
-        }
-        else {
-            if(rows.length > 0) {
-                console.log("User Exists");
-                res.json({message: "User Exists"});
+
+    if(req.body.firstName === 'undefined' || req.body.lastName === 'undefined' || req.body.email === 'undefined' || req.body.password === 'undefined') {
+        res.json({message: "Error Occured"});
+    }
+    else {
+        var q = "SELECT * FROM User WHERE email = ? ;"
+        console.log(q);
+        connection.query(q, connection.escape(req.body.email), function (err, rows, fields) {
+            if(err) {
+                console.log("Sign Up: Error Occured");
+                console.log(err);
+                res.json({message: "Error Occured"});
             }
             else {
-                var fName = req.body.firstName;
-                var lName = req.body.lastName;
-                var email = req.body.email;
-                var pass = req.body.password;
-                var phone = req.body.phone;
-                var q = "INSERT INTO User(firstName, lastName, email, password, phone) VALUES ("+'\''+fName+'\','+'\''+lName+'\','+'\''+email+'\','+'\''+pass+'\','+'\''+phone+'\''+");";
-                console.log(q);
-                connection.query(q, function (err, results) {
-                    if(err) {
-                        console.log("Sign Up (sql): Error Occured");
-                        res.json({message: "Error Occured"});
+                if(rows.length > 0) {
+                    console.log("User Exists");
+                    res.json({message: "User Exists"});
+                }
+                else {
+                    var fName = req.body.firstName;
+                    var lName = req.body.lastName;
+                    var email = req.body.email;
+                    var pass = req.body.password;
+                    var phone = req.body.phone;
+                    if(phone === 'undefined') {
+                        phone = "n/a";
                     }
-                    else {
-                        console.log('Sign Up: Success');
-                        var user = results.insertId;
-                        var payload = {
-                            id : user,
-                            email : req.body.email
-                        };
-                        var token = jwt.encode(payload, settings.secret);
-                        res.json({message: "Success", token: token});
-                    }
-                });
+                    var q = "INSERT INTO User(firstName, lastName, email, password, phone) VALUES ("+'\''+fName+'\','+'\''+lName+'\','+'\''+email+'\','+'\''+pass+'\','+'\''+phone+'\''+");";
+                    console.log(q);
+                    connection.query(q, function (err, results) {
+                        if(err) {
+                            console.log("Sign Up (sql): Error Occured");
+                            res.json({message: "Error Occured"});
+                        }
+                        else {
+                            console.log('Sign Up: Success');
+                            var user = results.insertId;
+                            var payload = {
+                                id : user,
+                                email : req.body.email
+                            };
+                            var token = jwt.encode(payload, settings.secret);
+                            res.json({message: "Success", token: token});
+                        }
+                    });
+                }
             }
-        }
-    });
+        });
+    }
 });
 
 router.post('/login', function (req, res, next) {

@@ -1,7 +1,7 @@
 var connection = require('../../connection');
 var express = require('express');
 var settings = require('../../settings');
-var keyword_extractor = require('keyword-extractor'); 
+var keyword_extractor = require('keyword-extractor');
 
 var router = express.Router();
 
@@ -24,7 +24,7 @@ var router = express.Router();
     originalShort = req.body.shortDes;
     originalLong = req.body.longDes;
     console.log(req.body.name);
-    // tokenize /extract : 
+    // tokenize /extract :
     tokensName = keyword_extractor.extract(originalName, {language:"english",remove_duplicates:true, returned_changed_case:true, remove_digits:true});
     tokensShort = keyword_extractor.extract(originalLong, {language:"english",remove_duplicates:true, returned_changed_case:true, remove_digits:true});
     tokensLong = keyword_extractor.extract(originalShort, {language:"english",remove_duplicates:true, returned_changed_case:true, remove_digits:true});
@@ -70,7 +70,7 @@ var router = express.Router();
                     // compute a suggestion
                     var priceSuggestion = median + ((avg / max) * (sum / min))/2;
                     console.log("Sending a Suggestion!");
-                    res.json({message: priceSuggestion}); 
+                    res.json({message: priceSuggestion});
                 }
             });
         }

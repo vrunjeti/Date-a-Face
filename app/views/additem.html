@@ -45,7 +45,7 @@
 
 	  </form>
 
-	  <div class="col s12 l6">
+<!--  <div class="col s12 l6">
   		  <form action="#">
 		    <div class="file-field input-field">
 		      <input class="file-path validate" type="text"/>
@@ -55,6 +55,16 @@
 		      </div>
 		    </div>
 		  </form>
-	  </div>
+	  </div> -->
+
+		<section>
+			<button class="btn" id="upload-pseudo">Upload Image</button>
+			<p>File: {{additemC.file}}</p>
+			<p>objectURL: {{additemC.objectURL}}</p>
+			<p>Image:</p><img ng-src="{{additemC.objectURL}}">
+			<input style="display:none" type="file" accept="image/*" id="upload">
+		</section>
+
+
 	</div>
 </div>

@@ -2,13 +2,13 @@
 * This is part of our super advanced moneytentacles function. This little guy scoops all the little fishies from their homes
 * and puts them in the fine modern-day rows of solitude that is our database.
 */
-
 var express = require('express');
 var cheerio = require('cheerio');
 var request = require('request');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var connection = require('./connection');
+var meta= require('./metaphone');
 
 var app = express();
 
@@ -29,7 +29,7 @@ var friends = {
 var masterId = 1;
 
 // change me
-funkyMagic(friends.arts, 0)
+funkyMagic(friends.games, 0)
 //
 
 function funkyMagic(victim, n) {
@@ -92,7 +92,8 @@ function unicornBlast (realm, sinker) {
             email = "public@sailbought.com"
             //post = post + " \nContact: " + email;
             title = title.replace(/[^a-zA-Z ]/g, "")
-            var swordfish = "INSERT INTO Item(name, shortDes, longDesc, price, userid) VALUES ("+'\''+title+'\','+'\''+shortPost+'\','+'\''+post+'\','+price+','+masterId+");";
+            var longphrase = meta.metaphrase(title + ' ' + shortPost + ' ' + post);
+            var swordfish = "INSERT INTO Item(name, shortDes, longDesc, price, userid, phonetic) VALUES ("+'\''+title+'\','+'\''+shortPost+'\','+'\''+post+'\','+price+','+masterId+',\''+longphrase+'\''+");";
             console.log(swordfish);
             connection.query(swordfish,function (err, rows) {
                 if(err) {
