@@ -1,6 +1,8 @@
 var connection = require('../../connection');
 var express = require('express');
+var meta= require('../../metaphone');
 var router = express.Router();
+
 
 /**
 * POST Route /insert 
@@ -173,7 +175,10 @@ router.get('/item/search/', function(req, res) {
     if(typeof searchQuery=== 'undefined') {
         searchQuery = "";
     }
-    var q = "SELECT * FROM Item WHERE MATCH(name, shortDes, longDesc) AGAINST ('" + searchQuery + "')";
+    else {
+        searchQuery = meta.metaphrase(req.query.query);
+    }
+    var q = "SELECT * FROM Item WHERE MATCH(name, shortDes, longDesc, phonetic) AGAINST ('" + searchQuery + "')";
     console.log(q)
     connection.query(q, function(err, rows, fields){
         if(!err) { 

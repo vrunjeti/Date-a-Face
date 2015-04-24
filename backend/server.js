@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var cloudinary = require('cloudinary');
+var meta= require('./metaphone');
 
 var app = express();
 app.use(cors());
@@ -25,6 +26,8 @@ cloudinary.config({
 
 // router
 var router = require('./router')(app);
+
+//console.log(meta.metaphrase("mcbuuk macbook"));
 
 module.exports = app;
 //app.listen(8000, '0.0.0.0');
