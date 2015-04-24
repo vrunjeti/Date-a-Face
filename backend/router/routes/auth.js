@@ -40,6 +40,11 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
     var longDesc = req.body.longDesc;
     var price = req.body.price;
     if(userid === 'undefined' || name === 'undefined' || shortDes === 'undefined' || longDesc === 'undefined' || price === 'undefined') {
+        console.log("UNDEFINED");
+        res.json({message: "Error Occured"});
+    }
+    else if(name.length == 0 || shortDes.length == 0 || longDesc.length == 0) {
+        console.log("UNDEFINED");
         res.json({message: "Error Occured"});
     }
     else {
@@ -75,11 +80,16 @@ router.put('/profile/item', isAuthenticated, function (req, res, next) {
     var name = req.body.name;
     var shortDes = req.body.shortDes;
     var longDesc = req.body.longDesc;
-    var longphrase = meta.metaphrase(name +' '+ shortDes +' '+ longDesc);    
-    if(name === 'undefined' || shortDes === 'undefined' || longDesc === 'undefined' || price === 'undefined') {
+    if(name === 'undefined' || shortDes === 'undefined' || longDesc === 'undefined' || req.bodyprice === 'undefined') {
+        console.log("UNDEFINED");
+        res.json({message: "Error Occured"});
+    }
+    else if(name.length == 0 || shortDes.length == 0 || longDesc.length == 0) {
+        console.log("UNDEFINED");
         res.json({message: "Error Occured"});
     }
     else {
+        var longphrase = meta.metaphrase(name +' '+ shortDes +' '+ longDesc);    
         longphrase = longphrase.replace(/[^a-zA-Z ]/g, "");
         shortDes = shortDes.replace(/[^a-zA-Z ]/g, "");
         longDesc = longDesc.replace(/[^a-zA-Z ]/g, "");
@@ -178,6 +188,10 @@ router.post('/signup', function (req, res, next) {
     console.log('Signing Up:');
 
     if(req.body.firstName === 'undefined' || req.body.lastName === 'undefined' || req.body.email === 'undefined' || req.body.password === 'undefined') {
+        res.json({message: "Error Occured"});
+    }
+    else if(name.length == 0 || shortDes.length == 0 || longDesc.length == 0) {
+        console.log("UNDEFINED");
         res.json({message: "Error Occured"});
     }
     else {
