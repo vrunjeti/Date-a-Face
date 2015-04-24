@@ -3,7 +3,7 @@ var cors = require('cors');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
-
+var meta= require('./metaphone');
 
 var app = express();
 app.use(cors());
@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 
 // router
 var router = require('./router')(app);
+
+//console.log(meta.metaphrase("mcbuuk macbook"));
 
 module.exports = app;
 //app.listen(8000, '0.0.0.0');

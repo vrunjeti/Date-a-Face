@@ -3,6 +3,7 @@ var express = require('express');
 var jwt = require('jwt-simple');
 var jwt2 = require('jsonwebtoken');
 var settings = require('../../settings');
+var meta= require('../../metaphone');
 
 var router = express.Router();
 
@@ -38,7 +39,8 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
     var shortDes = req.body.shortDes;
     var longDesc = req.body.longDesc;
     var price = req.body.price;
-    var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid) VALUES ("+'\''+name+'\','+'\''+shortDes+'\','+'\''+longDesc+'\','+price+','+userid+");";
+    var longphrase = meta.metaphrase(name +' '+ shortDes +' '+ longDesc);    
+    var q_add = "INSERT INTO Item(name, shortDes, longDesc, price, userid, phonetic) VALUES ("+'\''+name+'\','+'\''+shortDes+'\','+'\''+longDesc+'\','+price+','+userid+',\''+longphrase+'\''+");";
     console.log(q_add);
     connection.query(q_add, function (err, rows) {
         if(err) {
@@ -61,8 +63,11 @@ router.post('/profile/item', isAuthenticated ,function (req, res, next) {
 */
 router.put('/profile/item', isAuthenticated, function (req, res, next) {
     console.log("Updating Item!");
-    var itemid = req.body.item_id;
-    var q_up = "UPDATE Item SET name=\'"+req.body.name+'\', shortDes=\''+req.body.shortDes+'\', longDesc=\''+req.body.longDesc+'\', price='+req.body.price+' WHERE id='+itemid+';';
+    var name = req.body.name;
+    var shortDes = req.body.shortDes;
+    var longDesc = req.body.longDesc;
+    var longphrase = meta.metaphrase(name +' '+ shortDes +' '+ longDesc);    
+    var q_up = "UPDATE Item SET name=\'"+req.body.name+'\', shortDes=\''+req.body.shortDes+'\', longDesc=\''+req.body.longDesc+'\', price='+req.body.price+'\', phonetic='+longphrase+' WHERE id='+itemid+';';
     console.log(q_up);
     connection.query(q_up, function (err, rows) {
         if(err) {
