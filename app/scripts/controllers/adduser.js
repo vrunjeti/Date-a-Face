@@ -30,6 +30,17 @@ angular.module('411t2App')
 				formData.phone = '';
 			});
 */
+		var invalidphone = isNaN(formData.phone);
+		var invalidemail = formData.email.replace(/.*@/, "")!="illinois.edu";
+		if(invalidphone)
+			vm.errmessage = "Please enter a valid number."
+
+		if(invalidemail)
+			vm.emailerrmessage = "Only illinois.edu emails are accepted at this time."
+
+		if(!(invalidphone) && !(invalidemail))
+		{
+
 		var url = 'http://localhost:8000/auth/signup';
 		$http
 		.post(url , {
@@ -48,5 +59,6 @@ angular.module('411t2App')
 				formData.password = '';
 			}
 		});
+		}
 	};
   });

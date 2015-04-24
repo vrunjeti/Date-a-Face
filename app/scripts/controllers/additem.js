@@ -27,6 +27,8 @@ angular.module('411t2App')
 	// 	$scope.$apply();
 	// });
 
+	
+
 	vm.insert = function(formData){
 		/**
 		* POST Route /insert
@@ -36,6 +38,9 @@ angular.module('411t2App')
 		* GET /sql/insert?table=Item&attr="Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
 		* Translated to MySQL: INSERT INTO table VALUES (attr);
 		*/
+		var invalidprice = isNaN(formData.price);
+		if(invalidprice)
+			vm.errprice = "Please enter a number value for price."
 
 		$http
 			.post(url + 'profile/item', {

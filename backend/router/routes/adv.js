@@ -15,7 +15,7 @@ var router = express.Router();
 * PARAMS: {name, shortDes, longDes}
 * Returns; JSON resposne with value
 */
-router.post('/pricesuggestion', function (req, res, next) {
+/*router.post('/pricesuggestion', function (req, res, next) {
     var maxLength = 8;
     var originalName = "";
     var originalShort = "";
@@ -75,7 +75,7 @@ router.post('/pricesuggestion', function (req, res, next) {
             });
         }
     });
-});
+}); */
 
 
 module.exports = router;
