@@ -21,6 +21,7 @@ angular.module('411t2App')
             $location.path('/login');
         }
 
+
         // $http
         //     .get(url + 'auth/profile')
         //     .error(function(status) {
@@ -59,6 +60,23 @@ angular.module('411t2App')
     };
 
     vm.updateItem = function(formData){
+
+    var invaliditemnameu = (!formData.name || 0==formData.name.length || !formData.name.trim());
+    var invalidshortu = (!formData.shortDes || 0==formData.shortDes.length || !formData.shortDes.trim());
+    var invalidlongu = (!formData.longDesc || 0==formData.longDesc.length || !formData.longDesc.trim());
+    var invalidpriceu = isNaN(formData.price) || (!formData.price || 0==formData.price.length || !formData.price.trim());
+        
+        if(invalidpriceu)
+            vm.errpriceu = "Please enter a number value for price."
+        if(invalidshortu)
+            vm.errshortu = "Please don't leave the short description blank."
+        if(invalidlongu)
+            vm.errlongu = "Please don't leave the long description blank."
+        if(invaliditemnameu)
+            vm.erritemu = "Please give your item a name."
+
+        if(!invalidpriceu && !invalidshortu && !invalidlongu &&!invaliditemnameu)
+        {
         $http
             .put(url + 'auth/profile/item', {
                     item_id: vm.itemId,
@@ -76,5 +94,6 @@ angular.module('411t2App')
                 formData.email = '';
                 $location.path('/profile');
             });
+        }
     };
   });
