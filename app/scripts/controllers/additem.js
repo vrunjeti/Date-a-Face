@@ -52,10 +52,22 @@ angular.module('411t2App')
 		* GET /sql/insert?table=Item&attr="Girl Scout Cookies", "Thin mints","Yummy snacks for all to enjoy!",  20.00, 1
 		* Translated to MySQL: INSERT INTO table VALUES (attr);
 		*/
-		var invalidprice = isNaN(formData.price);
+
+		var invaliditemname = (!formData.name || 0==formData.name.length || !formData.name.trim());
+		var invalidshort = (!formData.shortDes || 0==formData.shortDes.length || !formData.shortDes.trim());
+		var invalidlong = (!formData.longDesc || 0==formData.longDesc.length || !formData.longDesc.trim());
+		var invalidprice = isNaN(formData.price) || (!formData.price || 0==formData.price.length || !formData.price.trim());
 		if(invalidprice)
 			vm.errprice = "Please enter a number value for price."
+		if(invalidshort)
+			vm.errshort = "Please don't leave the short description blank."
+		if(invalidlong)
+			vm.errlong = "Please don't leave the long description blank."
+		if(invaliditemname)
+			vm.erritem = "Please give your item a name."
 
+		if(!invalidprice && !invalidshort && !invalidlong &&!invaliditemname)
+		{
 		$http
 			.post(url + 'profile/item', {
 				name: formData.name,
@@ -75,6 +87,8 @@ angular.module('411t2App')
 				// vm.postData = data.id.insertId;
 				$location.path('/item/' + data.id.insertId);
 			});
+
+		}
 	};
 
 	vm.upload = function()

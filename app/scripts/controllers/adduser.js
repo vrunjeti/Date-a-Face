@@ -30,15 +30,32 @@ angular.module('411t2App')
 				formData.phone = '';
 			});
 */
-		var invalidphone = isNaN(formData.phone);
-		var invalidemail = formData.email.replace(/.*@/, "")!="illinois.edu";
-		if(invalidphone)
-			vm.errmessage = "Please enter a valid number."
+	
+		var invalidstringf = (!formData.firstName || 0==formData.firstName.length || !formData.firstName.trim());
+		var invalidstringl = (!formData.lastName || 0==formData.lastName.length || !formData.lastName.trim());
+		var invalidstringp = (!formData.password || 0==formData.password.length || !formData.password.trim());
 
-		if(invalidemail)
+		var invalidphone = (!formData.phone || 0==formData.phone.length || !formData.phone.trim()) || isNaN(formData.phone);
+		var invalidemailblank = (!formData.email || 0==formData.email.length || !formData.email.trim());
+		var invalidemailillini = formData.email.replace(/.*@/, "")!="illinois.edu";
+
+
+		if(invalidstringf) 
+			vm.errstringf = "Please enter a valid first name."
+
+		if(invalidstringl)
+			vm.errstringl = "Please enter a valid last name."
+
+		if(invalidemailblank || invalidemailillini)
 			vm.emailerrmessage = "Only illinois.edu emails are accepted at this time."
 
-		if(!(invalidphone) && !(invalidemail))
+		if(invalidstringp)
+			vm.errstringp = "Please enter a valid password."
+
+		if(invalidphone)
+			vm.errmessage = "Please enter a valid phone number."
+
+		if(!(invalidphone) && !(invalidemailblank) &&!(invalidemailillini) && !(invalidstringl) && !(invalidstringf) &&!(invalidstringp))
 		{
 
 		var url = 'http://localhost:8000/auth/signup';
