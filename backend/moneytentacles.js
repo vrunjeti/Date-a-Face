@@ -29,7 +29,7 @@ var friends = {
 var masterId = 1;
 
 // change me
-funkyMagic(friends.arts, 0)
+funkyMagic(friends.games, 0)
 //
 
 function funkyMagic(victim, n) {
