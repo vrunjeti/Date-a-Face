@@ -64,7 +64,7 @@ angular.module('411t2App')
     var invaliditemnameu = (!formData.name || 0==formData.name.length || !formData.name.trim());
     var invalidshortu = (!formData.shortDes || 0==formData.shortDes.length || !formData.shortDes.trim());
     var invalidlongu = (!formData.longDesc || 0==formData.longDesc.length || !formData.longDesc.trim());
-    var invalidpriceu = isNaN(formData.price) || (!formData.price || 0==formData.price.length || !formData.price.trim());
+    var invalidpriceu = isNaN(formData.price) || (!formData.price || 0==formData.price.length);
         
         if(invalidpriceu)
             vm.errpriceu = "Please enter a number value for price."

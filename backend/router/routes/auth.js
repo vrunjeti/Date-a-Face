@@ -190,10 +190,6 @@ router.post('/signup', function (req, res, next) {
     if(req.body.firstName === 'undefined' || req.body.lastName === 'undefined' || req.body.email === 'undefined' || req.body.password === 'undefined') {
         res.json({message: "Error Occured"});
     }
-    else if(name.length == 0 || shortDes.length == 0 || longDesc.length == 0) {
-        console.log("UNDEFINED");
-        res.json({message: "Error Occured"});
-    }
     else {
         var q = "SELECT * FROM User WHERE email = ? ;"
         console.log(q);
