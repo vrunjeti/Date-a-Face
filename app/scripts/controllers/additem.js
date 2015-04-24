@@ -8,24 +8,38 @@
  * Controller of the 411t2App
  */
 angular.module('411t2App')
-  .controller('AdditemCtrl', function ($http, $scope, $location) {
+  .controller('AdditemCtrl', function ($http, $scope, $location, $window) {
     // bind 'this' to vm (view-model)
 	var vm = this;
 	var url = 'http://localhost:8000/auth/';
 
 	$scope.fileName = 'balhss';
 
-	// document.getElementById("upload-pseudo").addEventListener("click", function(event) {
-	// 	console.log(event);
-	// 	document.getElementById("upload").click();
-	// });
+    $scope.$on('$viewContentLoaded', function() {
+    	if(!$window.sessionStorage.token){
+            $location.path('/login');
+        }
+        // $http
+        //     .get(url + 'profile')
+        //     .success(function(data, status){
+        //         if(data.message === "Error Occured"){
+        //             $location.path('/login');
+        //         }
+        //     });
+    });
 
-	// document.getElementById("upload").addEventListener("change", function(event) {
-	// 	console.log(event);
-	// 	vm.fileName = event.target.files[0].name;
-	// 	vm.file = event.target.files[0];
-	// 	$scope.$apply();
-	// });
+	document.getElementById("upload-pseudo").addEventListener("click", function(event) {
+		console.log(event);
+		document.getElementById("upload").click();
+	});
+
+	document.getElementById("upload").addEventListener("change", function(event) {
+		console.log(event);
+		vm.fileName = event.target.files[0].name;
+		vm.file = event.target.files[0];
+		$scope.$apply();
+		vm.objectURL = $window.URL.createObjectURL(vm.file);
+	});
 
 	vm.insert = function(formData){
 		/**
