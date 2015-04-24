@@ -68,9 +68,16 @@ router.post('/pricesuggestion', function (req, res, next) {
                 else {
                     var median = rows[0].median;
                     // compute a suggestion
-                    var priceSuggestion = median + ((avg / max) * (sum / min))/2;
-                    console.log("Sending a Suggestion!");
-                    res.json({message: priceSuggestion});
+                    var temp = parseFloat(median);
+                    if(isNaN(temp)) {
+                        console.log("Unable to make suggestion!");
+                        res.json({message: "Price Suggestion Unavailable"});
+                    }
+                    else {
+                        var priceSuggestion = median + ((avg / max) * (sum / min))/2;
+                        console.log("Sending a Suggestion!");
+                        res.json({message: priceSuggestion});
+                    }
                 }
             });
         }
